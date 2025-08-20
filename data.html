@@ -13,116 +13,32 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
   
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Quicksand', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f9fa;
-    }
-    
-    .navbar-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      background-color: #2c3e50;
-      color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .logo img {
-      height: 50px;
-    }
-    
-    .nav-list ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav-list li {
-      margin-left: 2rem;
-    }
-    
-    .nav-list a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    .nav-list a:hover, .nav-list a.active {
-      color: #4CAF50;
-    }
-    
-    main {
-      padding: 2rem 5%;
-    }
-    
+   <style>
+    /* Styling tambahan untuk tabel dan pencarian */
     .data-container {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    h2 {
-      color: #2c3e50;
-      margin-bottom: 1rem;
-    }
-    
-    .description {
-      margin-bottom: 1.5rem;
-      color: #555;
-    }
-    
-    .commodity-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .tab-btn {
-      padding: 0.5rem 1rem;
-      background: #e9ecef;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    
-    .tab-btn.active, .tab-btn:hover {
-      background: #4CAF50;
-      color: white;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
     
     .search-container {
+      margin-bottom: 20px;
       display: flex;
+      gap: 10px;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
     }
     
     .search-box {
       flex: 1;
       min-width: 250px;
-      padding: 0.75rem;
+      padding: 10px 15px;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-family: 'Quicksand', sans-serif;
     }
     
     .filter-select {
-      padding: 0.75rem;
+      padding: 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
       background-color: white;
@@ -131,19 +47,17 @@
     
     .table-container {
       overflow-x: auto;
-      margin-bottom: 1.5rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
+      margin-bottom: 30px;
     }
     
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 800px;
+      font-family: 'Quicksand', sans-serif;
     }
     
     th, td {
-      padding: 0.75rem 1rem;
+      padding: 12px 15px;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
@@ -153,27 +67,25 @@
       position: sticky;
       top: 0;
       font-weight: bold;
-      color: #2c3e50;
     }
     
     tr:hover {
-      background-color: #f8f9fa;
+      background-color: #f5f5f5;
     }
     
     .pagination {
       display: flex;
       justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-top: 20px;
+      gap: 5px;
     }
     
     .pagination button {
-      padding: 0.5rem 0.75rem;
+      padding: 8px 12px;
       border: 1px solid #ddd;
       background-color: white;
       cursor: pointer;
       border-radius: 4px;
-      font-family: 'Quicksand', sans-serif;
     }
     
     .pagination button.active {
@@ -184,62 +96,33 @@
     
     .no-results {
       text-align: center;
-      padding: 2rem;
+      padding: 20px;
       font-style: italic;
-      color: #6c757d;
+      color: #666;
     }
     
     .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
+      display: inline-block;
+      padding: 10px 15px;
       background-color: #4CAF50;
       color: white;
       text-decoration: none;
       border-radius: 4px;
-      font-weight: 500;
-      transition: background-color 0.3s;
+      margin-top: 10px;
     }
     
     .download-btn:hover {
       background-color: #45a049;
     }
     
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #2c3e50;
-      color: white;
-      margin-top: 2rem;
-    }
-    
     @media (max-width: 768px) {
-      .navbar-container {
-        flex-direction: column;
-        padding: 1rem;
-      }
-      
-      .nav-list {
-        margin-top: 1rem;
-      }
-      
-      .nav-list ul {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .nav-list li {
-        margin: 0.5rem 0;
+      th, td {
+        padding: 8px 10px;
+        font-size: 14px;
       }
       
       .search-container {
         flex-direction: column;
-      }
-      
-      th, td {
-        padding: 0.5rem;
-        font-size: 0.9rem;
       }
     }
   </style>
