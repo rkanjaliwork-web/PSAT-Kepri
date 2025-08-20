@@ -47,7 +47,7 @@ header, main, footer {
 /* ===== Main Content ===== */
 main {
   padding: 3rem 1rem;
-  max-width: 1200px;
+  max-width: 900px; /* kecilkan lebar desktop */
   margin: 0 auto;
 }
 
@@ -60,8 +60,9 @@ main {
 }
 
 .content-description {
-  flex: 1 1 60%;
-  max-width: 700px;
+  flex: 1 1 100%;
+  max-width: 650px; /* kecilkan lebar konten */
+  margin: 0 auto;   /* center konten */
 }
 
 .content-description .title {
@@ -97,13 +98,15 @@ button:hover {
 }
 
 textarea {
-  width: 80%;
-  max-width: 500px;
+  width: 90%;
+  max-width: 400px; /* kecilkan dari 500px */
   padding: 0.8rem;
   border-radius: 5px;
   border: 1px solid #ccc;
   resize: vertical;
   font-family: 'Quicksand', sans-serif;
+  display: block;
+  margin: 0 auto;
 }
 
 textarea:focus {
@@ -141,7 +144,6 @@ footer {
   }
 
   .content-description {
-    flex: 1 1 100%;
     max-width: 100%;
   }
 
@@ -161,7 +163,7 @@ footer {
   }
 
   textarea {
-    width: 90%;
+    width: 95%;
   }
 }
 
