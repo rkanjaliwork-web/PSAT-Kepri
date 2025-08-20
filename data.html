@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data OPTK Apel - PSAT Kepulauan Riau</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/app.css" />
+  <title>Data OPTK - PSAT Kepulauan Riau</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,31 +14,115 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
   
   <style>
-    /* Styling tambahan untuk tabel dan pencarian */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Quicksand', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background-color: #2c3e50;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .logo img {
+      height: 50px;
+    }
+    
+    .nav-list ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-list li {
+      margin-left: 2rem;
+    }
+    
+    .nav-list a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-list a:hover, .nav-list a.active {
+      color: #4CAF50;
+    }
+    
+    main {
+      padding: 2rem 5%;
+    }
+    
     .data-container {
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+    
+    .description {
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+    
+    .commodity-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .tab-btn {
+      padding: 0.5rem 1rem;
+      background: #e9ecef;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .tab-btn.active, .tab-btn:hover {
+      background: #4CAF50;
+      color: white;
     }
     
     .search-container {
-      margin-bottom: 20px;
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
     
     .search-box {
       flex: 1;
       min-width: 250px;
-      padding: 10px 15px;
+      padding: 0.75rem;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-family: 'Quicksand', sans-serif;
     }
     
     .filter-select {
-      padding: 10px;
+      padding: 0.75rem;
       border: 1px solid #ddd;
       border-radius: 4px;
       background-color: white;
@@ -50,17 +131,19 @@
     
     .table-container {
       overflow-x: auto;
-      margin-bottom: 30px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
     }
     
     table {
       width: 100%;
       border-collapse: collapse;
-      font-family: 'Quicksand', sans-serif;
+      min-width: 800px;
     }
     
     th, td {
-      padding: 12px 15px;
+      padding: 0.75rem 1rem;
       text-align: left;
       border-bottom: 1px solid #ddd;
     }
@@ -70,25 +153,27 @@
       position: sticky;
       top: 0;
       font-weight: bold;
+      color: #2c3e50;
     }
     
     tr:hover {
-      background-color: #f5f5f5;
+      background-color: #f8f9fa;
     }
     
     .pagination {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
-      gap: 5px;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
     }
     
     .pagination button {
-      padding: 8px 12px;
+      padding: 0.5rem 0.75rem;
       border: 1px solid #ddd;
       background-color: white;
       cursor: pointer;
       border-radius: 4px;
+      font-family: 'Quicksand', sans-serif;
     }
     
     .pagination button.active {
@@ -99,33 +184,62 @@
     
     .no-results {
       text-align: center;
-      padding: 20px;
+      padding: 2rem;
       font-style: italic;
-      color: #666;
+      color: #6c757d;
     }
     
     .download-btn {
-      display: inline-block;
-      padding: 10px 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
       background-color: #4CAF50;
       color: white;
       text-decoration: none;
       border-radius: 4px;
-      margin-top: 10px;
+      font-weight: 500;
+      transition: background-color 0.3s;
     }
     
     .download-btn:hover {
       background-color: #45a049;
     }
     
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #2c3e50;
+      color: white;
+      margin-top: 2rem;
+    }
+    
     @media (max-width: 768px) {
-      th, td {
-        padding: 8px 10px;
-        font-size: 14px;
+      .navbar-container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+      
+      .nav-list {
+        margin-top: 1rem;
+      }
+      
+      .nav-list ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .nav-list li {
+        margin: 0.5rem 0;
       }
       
       .search-container {
         flex-direction: column;
+      }
+      
+      th, td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -133,27 +247,36 @@
 <body>
   <header class="navbar-container">
     <div class="logo">
-      <img src="img/logo.png" alt="Logo Karantina" />
+      <img src="https://via.placeholder.com/150x50/2c3e50/ffffff?text=Logo+Karantina" alt="Logo Karantina" />
     </div>
     <nav class="nav-list">
       <ul>
         <li><a href="index.html">Beranda</a></li>
         <li><a href="data.html" class="active">Data OPTK</a></li>
         <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
-
+        <li><a href="#kontak">Kontak</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="data-container">
-      <h2>Data OPTK untuk Komoditas Apel</h2>
-      <p>Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk komoditas Apel:</p>
+      <h2>Data OPTK Semua Komoditas</h2>
+      <p class="description">Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk berbagai komoditas pertanian:</p>
+      
+      <div class="commodity-tabs">
+        <button class="tab-btn active" data-commodity="all">Semua Komoditas</button>
+        <button class="tab-btn" data-commodity="apel">🍎 Apel</button>
+        <button class="tab-btn" data-commodity="anggur">🍇 Anggur</button>
+        <button class="tab-btn" data-commodity="pir">🍐 Pir</button>
+        <button class="tab-btn" data-commodity="bawang_bombay">🧅 Bawang Bombay</button>
+        <button class="tab-btn" data-commodity="bawang_putih">🧄 Bawang Putih</button>
+      </div>
       
       <div class="search-container">
-        <input type="text" id="searchInput" class="search-box" placeholder="Cari OPTK..." onkeyup="searchTable()">
-        <select id="categoryFilter" class="filter-select" onchange="filterTable()">
-          <option value="">Semua Kategori</option>
+        <input type="text" id="searchInput" class="search-box" placeholder="Cari OPTK, inang, atau daerah sebar...">
+        <select id="categoryFilter" class="filter-select">
+          <option value="">Semua Jenis</option>
           <option value="SERANGGA">Serangga</option>
           <option value="TUNGAU">Tungau</option>
           <option value="GULMA NON PARASITIK">Gulma Non Parasitik</option>
@@ -162,7 +285,7 @@
           <option value="VIRUS">Virus</option>
           <option value="VIROID">Viroid</option>
         </select>
-        <select id="statusFilter" class="filter-select" onchange="filterTable()">
+        <select id="statusFilter" class="filter-select">
           <option value="">Semua Status</option>
           <option value="A1">A1</option>
           <option value="A2">A2</option>
@@ -174,6 +297,7 @@
           <thead>
             <tr>
               <th>No</th>
+              <th>Komoditas</th>
               <th>Jenis OPTK</th>
               <th>Kategori</th>
               <th>Nama OPTK</th>
@@ -192,7 +316,7 @@
         <!-- Pagination akan diisi oleh JavaScript -->
       </div>
       
-      <a href="data/apel.csv" download class="download-btn">
+      <a href="#" id="downloadBtn" class="download-btn">
         <i class="fas fa-download"></i> Unduh Data CSV
       </a>
     </section>
@@ -203,59 +327,119 @@
   </footer>
 
   <script>
-    // Data dari CSV (contoh data dari file yang diberikan)
-    const csvData = `No,Jenis OPTK,Kategori,NAMA OPTK,INANG/HOST,MP,DAERAH SEBAR
-1,SERANGGA,A1,"Alsophila pometaria (Harris); (Syn. Anisopterix pometaria, Anisopteryx pometaria); (Lepidoptera: Geometridae); fall cankerworm","Acer spp. (maple), Fraxinus spp., Hackberry, Juglan sp. (walnut), Malus domestica (apel, apple), Pelargonium (geranium), Pyrus communis (pir, pear), Quercus spp. (oak), Rose, Salix sp. (willow), Ulmus sp. (elm), other stone fruit","batang (stems, trunks, shoots, branches), buah (fruits), bunga (flowers, inflorescences, cones, calyx), daun (leaves)","America: Canada, USA"
-2,SERANGGA,A1,"""Anastrepha fraterculus(Wiedemann);(Syn. Acrotoxa fraterculus (Weidemann), Anastrepha braziliensis Greene, Anastrepha costarukmanii""Capoor, Anastrepha""fraterculus var. soluta Bezzi,Anastrepha lambayecaeKorytkowski, Anastrephapseudofraterculus Capoor,Anastrepha scholae Capoor,Anthomyia frutalisWeyenburgh, Anastrephaperuviana Towsend,Anastrepha soluta, Dacusfraterculus Weidemann,Tephritis mellea Walker,Trypeta fraterculus(Weidemann), Trypetaunicolor Loew);(Diptera: Tephritidae);South American fruitfly""","Actinidia chinensis (Chinese gooseberry), Actinidia deliciosa (kiwi, kiwifruit), Ampelocera hottlei, Annona cherimola (cherimoya), Annona muricata (sirsak,""soursop), Annona squamosa (srikaya, sweetsop), Averrhoa carambola (belimbing, carambola, star-fruit), Butia eriospatha, Campomanesia xanthocarpa, Carica papaya, (pepaya, papaya), Chrysophyllum gonocarpum, Citrus aurantium (sour orange), Citrus limetta (sweet lemon), Citrus maxima (pummelo), Citrus reticulata (mandarin), Citrus sinensis (navel orange), Citrus x paradisi, Coffea arabica (kopi arabika, Arabica coffee),Coffea liberica (Liberian coffee tree), Cydonia oblonga(kwinsi, quince), Diospyros kaki (kesemek, persimmon), Diospyros malabarica, Euginia stipitata, Eriobotrya japonica (loquat), Eugenia brasiliensis (brazil cherry),""catappa (ketapang, Indian almond), Theobroma cacao (kakao, cocoa), Vitis vinifera (anggur, grapevine), Ziziphus joazeiro, Zuelania Guidonia""Eugenia involucrate, Eugenia pyriformis, Eugenia stipitate, Eugenia uniflora (Surinam cherry), Feijoa sellowiana (horn of plenty), Ficus carica (ara, fig), Fortunella japonica (kumquat), Fragaria vesca (wild strawberry), Inga edulis, Inga marginata, Juglans australis, Juglans neotropica (Andean walnut), Juglans regia (walnut), Malus spp.,Malus domestica (apel, apple), Mangifera indica (mangga, mango), Manilkara zapota (sawo, sapodilla), Myrcia tomentosa, Olea europaea subsp. europaea (European olive), Passiflora alata, Persea americana (alpukat, avocado), Pouteria caimito, Pouteria obovata, Prunus americana (aprikot, apricot), Prunus dulcis (almon, badam,""""almond), Prunus persica (persik, peach), Psidium cattleianum (strawberry guava), Psidium longipes, Psidium guajava (jambu biji, guava), Psidium guineense (Guinea guava), Punica granatum (delima, pomegranate), Pyrus communis (pir, pear), Quassia guianensis, Rubus glaucus, Solanum aligerum, Solanum quitoense, Spondias dulcis (otaheite apple), Spondias mombin (hog plum), Spondias purpurea (red mombin), Spondias cytherea, Spondias tuberosa, Syzygium aquea (jambu air, star apple), Syzygium jambos (jambu mawar, rose apple), Syzygium malaccense (jambu bol,malay-apple), Talisia olivaeformis, Terminalia""","buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)","America: Argentina, Belize, Bolivia, Brazil, Colombia, Costa Rica, Ecuador, El Salvador, French Guiana. Guatemala, Guyana, Honduras, Mexico, Nicaragua, Panama, Paraguay,Peru, Suriname, Trinidad and Tobago, USA, Uruguay, Venezuela"
-3,SERANGGA,A1,"Anastrepha ludens (Loew); (Syn. Acrotoxa ludens (Loew), Anastrepha lathana Stone, Trypeta ludens Loew); (Diptera: Tephritidae); Mexican fruit fly","Anacardium occidentale (jambu mete, cashew-nut), Annona cherimola (cherimoya), Annona liebmanniana, Annona muricata (sirsak, soursop), Annona reticulata (buah nona, srikaya), Annona squamosa (srikaya, sweetsop, bullock's heart, custard apple), Casimiroa edulis (white sapote), Citrus spp. (jeruk, orange), Citrus aurantifolia (lime), Citrus aurantium (sour orange), Citrus maxima (pummelo), Citrus limetta (sweet lemon tree), Citrus sinensis (navel orange), Citrus x paradisi""(grapefruit), Citrus medica (citron), Citrus reticulata (mandarin), Citrus reticulata x paradisi (tangelo), Coffea arabica (kopi arabika, arabica coffee), Cydonia oblonga (kwinsi, quince), Diospyros kaki (kesemek, persimmon), Feijoa sellowiana, Malus domestica (apel, apple), Mammea americana (mamey apple), Mangifera indica (mangga, mango), Passiflora edulis (passionfruit),Passiflora quadrangularis (markisa, passion-fruit, granadilla), Persea americana (alpukat, avocado), Pouteria sapota, Prunus persica (persik, peach), Psidium guajava (jambu biji, guava), Psidium longipes, Punica granatum (delima, pomegranate), Pyrus""communis (pir, pear), Sargentia greggii, Spondias purpurea, Syzygium aquea (jambu air, star apple), Talisia olivaeformis","buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)","America: Belize, Costa Rica, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama,USA"
-4,SERANGGA,A1,"Anastrepha serpentina(Wiedemann);(Syn.  Acrotoxa serpentinus Wiedemann, Dacus serpentinus Wiedemann, Leptoxys serpentina Wiedemann, Trypeta serpentina Wiedemann, Urophora vittithorax Wiedemann);(Diptera: Tephritidae); sapote fruit fly, sapodilla fruit fly, black fruit fly, dark fruit fly","""Alchornea latifolia, Annona cherimola, Annona glabra, Bumelia sebolana, Brysonima crassifolia, Capparis angulata, Citrus spp. (jeruk, orange), Citrus aurantium, Citrus maxima, Citrus reticulata, Citrus sinensis, Citrus x paradisi, Chrysophyllum cainito, Chrysophyllum argenteum, Chrysophyllum mexicanum, Cydonia oblonga (kwinsi, quince), Diospyros ebenaster, Dovyalishebecarpa, Eriobotrya japonica (lokwat, loquat),Ficus spp. (ara, fig), Lacmellea panamensis, Malus domestica (apel, apple), Mammea americana, Mangifera indica (mangga, mango), Manilkara spp., Manilkara zapota (sawo,""""sapodilla), Persea americana (alpukat, avocado), Pouteria viridis, Pouteria campechiana, Pouteria caimito, Pouteria obovata, Pouteria sapota, Prunus cerrasus (ceri, cherry), Prunus persica (persik,peach), Psidium guajava (jambu biji, guava), Pyrus communis (pir, pear), Pouteria caimito, Pouteriacampechiana (canistel), Pouteria sapota (mammey sapote) Sideroxylon capiri, Sideroxylon palmeri, Spondias mombin, Spondias purpurea, Spondias spp.""","buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)","America: Belize, Brazil, Colombia, Costa Rica, Curacao, Dominica, Ecuador, El Savador French Guiana, Guatemala, Guyana, Honduras, Mexico, Netherlands Antilles, Nicaragua, Panama, Peru, Suriname, Trinidad and Tobago, USA, Venezuela"
-5,SERANGGA,A1,"Anastrepha suspensa (Loew); (Syn.  Anastrepha longimacula Greene, Anastrepha unipuncta Sein, Trypeta suspensa Loew); (Diptera: Tephritidae); Carribean fruit fly","Annona spp., Annona squamosa (srikaya, sweetsop), Annona glabra, Annona reticulata (bullock's heart) Averrhoa carambola (belimbing, star-fruit), Blighia sapida (akee apple), Canellawinterana, Chrysobalanus""icaco, Carica papaya (pepaya,papaya), Carissa macrocarpa (Natal plum), Citrofortunella mitis, Citrus spp., Clausena lansium, Coccoloba uvifera, Capsicum annuum (cabai besar, paprika, bell-pepper), Casimiroa edulis, Chrysophyllum cainito, Chrysophyllum oliviforme, Clausena lansium, Coccoloba uvifera, Diospyros kaki (kesemek, persimmon), Diospyros blancoi, Diospyros virginiana, Dovyalis caffra, Ficus carica (ara, fig), Flacourtia indica, Fortunella margarita (oval kumquat), Fortunella x crassifolia, Eriobotrya japonica (loquat), Euginia dombeyi (brazil cherry), Euginia uniflora (surinam cherry), Eugenia""""(jambu biji, guava), Psidium cattleianum, Spondias spp., Spondias mombin, Synsepalum dulcificum, Spondias cytherea, Syzygium cumini (jamblang, java plum), Syzygium samarangense (jambu Semarang, java apple), Solanum lycopersicum (tomat, tomato), Syzygium spp., Syzygium aquea (jambu air, star apple), Terminaliacatappa (ketapang, Indian almond), Terminalia muelleri, Triphasia sp.""""spp., Fortunella margarita, Garcinia aristata, Garcinia mangostana (manggis, mangosteen), Garcinia livingstonei, Malus domestica (apel, apple), Malpighia glabra, Mangifera indica (mangga, mango), Manilkara zapota (sawo, sapodilla), Momordica charantia (paria, bitter gourd), Murraya spp. (kemuning,mock orange),  Momordica balsamina, Persea americana (alpukat, avocado), Phoenix dactylifera (kurma, dates- palm), Pimenta dioica, Prunus persica (persik, peach), Psidium longipes, Punica granatum (delima, pomegranate), Pyrus communis (pir, pear), Pouteria campechiana, Psidium guineense, Prunus cerrasus (ceri, cherry), Psidium guajava""","buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)","America: Bahamas, British Virgin Islands, Cayman Islands, Cuba, Dominican Republic, French Guiana, Haiti, Jamaica, Puerto Rico, USA, Virgin Islands"
-6,SERANGGA,A1,"Argyrotaenia velutinanaWalker;""(Syn. Eulia velutinanaWalker, Tortrix velutinanaWalker);(Lepidoptera: Tortricidae);redbanded leafroller""","""Acer sp. (maple), Abiesbalsamea, Ambrosia trifida,Alcea rosea, Apocynum sp.(dogbane), Betula papyrifera,Chrysanthemum, Geraniumsp., Ilex decidua, Larix spp.,Lobelia sp., Lonicera sp.,Malus spp., Malus domestica(apel, apple), Mangifera indica(mangga, mango), Myrica gale,Persea americana (alpukat,""""avocado), Picea glauca, Picea mariana, Picea rubens, Pinus sylvestris, Platantheracristata, Populus tremuloides, Prunus domestica (prem, plum), Prunus pensylvania, Prunus persica, Prunus serotina, Psidium guajava (jambu biji, guava), Pyrus communis (pir, pear),Quercus sp., Rosa spp., Syzygium aquea (jambu air, star apple), Tsuga canadensis, Vaccinium sp., Zinia violacea""","batang (stems (aboveground), trunks, shoots, branches), daun (leaves), buah (fruits)","America: Canada, USA"
-7,SERANGGA,A1,"""Bactrocera jarvisi (Tryon);(Syn. Afrodacus jarvisi(Tryon), Chaetodacus jarvisi""Tryon, D. australis Hendel, Dacus jarvisi (Tryon)); (Diptera: Tephritidae); Jarvis's fruitfly, Fiji fruitfly","""Anacardium occidentale(jambu mete, cashew-nut),Annona glabra, Annona""""muricata (sirsak, soursop), Areca catechu (pinang, betelnut palm), Averrhoa carambola (belimbing, star- fruit), Carica papaya (pepaya, papaya, pawpaw), Citrus aurantifolias (lime), Citrus limon (lemon), Citrus maxima (pummelo), Citrus reticulata (mandarin), Citrus sinensis (sweet orange), Citrus x paradisi (grapefruit), Cydonia oblonga (kwinsi, quince), Diospyros blancoi, Diospyros kaki (kesemek, persimmon), Feijoa sellowiana, Fortunella japonica (kumkwat,kumquat), Malus domestica (apel, apple), Malpighia emarginata, Mangifera indica (mangga, mango), Musa paradisiaca (pisang, kepok, plantain), Opuntia sp., Passiflora quadrangularis""""(markisa, passion-fruit, granadilla), Persea americana (alpukat, avocado), Planchonia careya, Pouteria campechiana, Pouteria caimito, Prunus americana (aprikot, apricot), Prunus persica (persik, peach),Psidium cattleianum, Psidium guajava (jambu biji, guava), Punica granatum (delima, pomegranate), Pyrus communis (pir, pear), Spondias purpurea, Syzygium aquea (jambu air, star apple), Syzygium malaccense (jambu bol, malay apple), Syzygium samarangense (jambu Semarang, Java apple), Terminalia arenicola,Terminalia catappa (ketapang, Indian almond)""","""buah (fruits), mediatanam (growing media associated with""plants), tanah (soil)","Oceania: Australia, PapuaNugini"
-8,SERANGGA,A1,"Bactrocera neohumeralis(Hardy);(Syn. Chaetodacushumeralis Perkins,""Chaetodacus tryoni var.sarcocephali Tryon, Dacusneohumeralis Hardy, Dacustryoni var. neohumeralisHardy);(Diptera: Tephritidae);lesser Queensland fruit fly""","Anacardium occidentale(jambu mete, cashew),Annona spp. (buah nona,sirsak, srikaya, annona,""soursop, sweetsop), Annonaglabra, Annona muricata,Annona reticulata, Annonasquamosa (srikaya, sugarapple), Avverhoa carambola(belimbing, carambola, star fruit), Cananga odorata (kenanga, cadmia), Carica papaya (pepaya, papaya), Citrus spp. (jeruk, orange), Citrus aurantiifolia (jeruk nipis, lime), Citrus limon (lemon, lemon), Citrus maxima (pummelo), Citrus reticulata (mandarin), Citrus sinensis (sweet orange), Citrus x paradisi (grapefruit),""Clausena lansium,Calophyllum inophyllum(nyamplung, Alexandrian""laurel), Coffea spp. (kopi,coffee), Coffea arabica (kopiarabika, arabica coffee), Capsicum annuum (cabai besar, paprika, bell pepper), Crateva religiosa, Chrysophyllum cainito (kenitu, sawo duren, cainito), Casimiroa edulis, Cyphomandra betacea, Diospyros blancoi, Diospyros kaki (kesemek, persimmon), Eriobotrya japonica (lokwat, loquat), Eugenia brasiliensis (brazil cherry), Eugenia dombeyi, Eugenia uniflora, Feijoa sellowiana, Fortunella japonica (kumkwat, kumquat), Malus domestica (apel, apple), Malus sylvestris (crab-apple tree), Malpighia""""emarginata, Manilkara zapota (sawo, sapodilla), Mangifera indica (mangga, mango), Morus nigra (murbei, mulberry), Musa xparadisiaca (pisang kepok, plantain), Muntingia calabura (kersen, talok, Jamaica cherry), Myrciaria cauliflora, Psidium guajava (jambu biji, guava), Passiflora spp., Passiflora edulis(passionfruit), Passiflora foetida (red fruit passion flower), Passiflora quadrangularis (giant granadilla), Passiflora suberosa (corkystem, passionflower), Phoenix dactylifera (kurma, date- palm), Pouteria caimito, Prunus americana (aprikot, apricot), Prunus domesticum (prem, plum), Prunus persica""""(persik, peach), Psidium cattleianum (strawberry guava), Psidium guajava (jambi biji, guava), Pyrus communis (pir, pear), Rollinia mucosa, Rubus rosaefolius,Solanum lycopersicum (tomat, tomato), Solanum laciniatum, Solanum seaforthianum, Spondias mombin, Spondias purpurea, Synsepalum dulcificum, Syzygium spp., Syzygium aqueum (wateryrose-apple), Syzygium jambos (rose apple), Syzygium malaccense (Malay apple), Syzygium paniculatum (Australian brush-cherry), Syzygium samarangense (water apple), Terminalia catappa (ketapang, Indian almond), Vitis labrusca, Ziziphus jujuba.""","buah (fruits), media tanam (growing media associated with plants), tanah (soil)","Oceania: Australia, PapuaNugini"
-9,SERANGGA,A1,"""Bactrocera zonata (Saunders, 1841); (Syn. Bactrocera maculigera Doleshall (misidentification), Chaetodacus zonatus (Saunders), Dacus (Strumeta) zonatus, Dacus mangiferae Cotes, 1893, Dacus persicae, Dacus persicus (Biggot), Dacus zonatus (Saunders), Dasyneura zonata Saunders, Dasyneura zonatus Saunders, 1942, Rivellia persicae Bigot, 1889, Strumeta zonata (Saunders), Strumeta zonatus Saunders); (Diptera: Tephritidae); peach fruitfly, peach fruit fly,"" guava fruit fly","""Aegle marmelos (golden apple), Annona squamosa (sugar apple), Careya arborea (tummy wood), Carica papaya (papaya, papaya, pawpaw), Cydonia oblonga (kwinsi, quince), Eriobotrya japonica (loquat), Ficus carica (common fig), Grewia asiatica (phalsa), Luffa, Malus domestica (apel, apple), Mangifera indica (mangga, mango), Momordica charantia (paria, bitter gourd), Phoenix dactylifera (kurma, date-palm), Prunus persica (persik, peach), Psidium guajava (jambu biji, guava), Punica granatum (delima,"" pomegranate), Terminalia ""catappa (ketapang, Singapore almond), Ziziphus, Ziziphus mauritiana (jujube)""","buah (fruits), media tanam (growing media associated with plants), tanah (soil)","Africa: Egypt, Libya, Mauritius, Reunion, Sudan America: USA Asia: Bangladesh, Bhutan, India, Iran, Iraq, Israel, Lao PDR (Laos), Myanmar, Nepal, Oman, Pakistan, Saudi Arabia, Sri Lanka, Thailand, United Arab Emirates, Vietnam, Yemen Europe: Cyprus, France"
-10,SERANGGA,A1,"Carposina sasakii Matsumura; (Syn. Carposina niponensis ""Walsingham, Carposina persicana (Ftch), Cydia persicana Sasaki); (Lepidoptera: Carposinidae); peach fruit moth, peach fruit borer""","Aronia arbutifolia, Chaenomeles japonica, Chaenomeles legenaria, ""Cornus mas, Crataegus cuneata, Crataegus pinnafitida, Cydonia oblonga (kwinsi, quince), Eriobotrya japonica (lokwat, loquat), Malus spp., Malus domestica (apel, apple), Malus prunifolia, Malus spectabilis, Malus toringo, Malus x micromalus, Pyrus communis (pir, pear), Prunus persica (persik,"" peach), Phoenix dactylifera (kurma, dates-palm), Prunus americana (aprikot, apricot), Prunus cerrasus (ceri, cherry), Prunus domestica (prem, plum), Prunus dulcis (almon, badam, almond), Prunus salicina, Pseudocydonia sinensis, Sorbus aucuparia, Punica granatum, Ziziphus jujube",buah (fruits),"Asia: China, DPR Korea (North Korea), Japan, Republic of Korea (South Korea) Europe: Russia"
-11,SERANGGA,A1,"Ceratitis capitata (Wiedemann); ""(Syn. Ceratitis citriperda MacLeay, Ceratitis hispanica Breme, Pardalaspis asparagi Bezzi, Tephritis capitata Wiedemann); (Diptera: Tephritidae); Mediterranean fruit fly, medfly""","Anacardium occidentale (jambu mete, cashew-nut), ""Annona cherimola, Annona muricata, Annona reticulata, Annona squamosa, Antidesma dallachiana, Antidesma venosum, Argania spinosa, Artabotrys monteiroae, Artabotrys altilis, Azima tetracantha, Blighia sapida, Brucea antidysenterica, Butia eriospatha, Calophyllum inophyllum, Calophyllum tacamahaca,Capparis mariana, Capparis sepaiaria, Capsicum annuum (cabai besar, paprika, bell-pepper), Capsicum chinense, Capsicum frutescens, Carica papaya (pepaya, pawpaw, papaya), Carisa carandas, Carissa edulis, Carissa macrocarpa,"" Carissaspinarum, Carissa tetramera, Casya Illinoinensis, Casimiroa ""edulis, Chrysobalanus icaci, Chrysohphyllum cainito, Chrysophyllum viridiflolium, Cinnamomum verum (cinamon, kayu manis), Citrus aurantium, Citrus limetta, Citrus limon, Citrus nobilis, Citrus reticulata x paradisi, Citrus sinensis, Clausena anisata, Clausena lansium, Coccinia microphylla, Coffea arabica (kopi arabika, arabica coffee), Coffea liberica (Liberican coffee tree), Cola natalensis, Crateva tapia, Cucumis dipsaceus, Cydonia oblonga (quince, kwinsi), Cyphomandra betacea, Dimocarpus longan, Diospyros abyssinica, Diospyros kaki (persik,"" persimmon), Diospyros mespiliformis, Diospyros ""pallens, Diospyros virginiana, Dovyalis caffra, Dovyalis hebecarpa, Drypetes natalensis, Durio zibethinus, Ekebergia capensis, Englerophytum magalismontanum, Eriobotrya japonica, Eucia divinorum, Eugenia brasiliensis, Eugenia paniculata, Eugenia uniflora, Feijoa sellowiana, Ficus carica, Filicium decipiens, Flacourtia indica, Flagellaria guineensis, Flueggea virosa, Fortunella japonica, Garcinia elliptica, Garcinia livingstone, Garcinia mangostana, Grewia trichocarpa, Guettarda speciosa, Harpephyllum caffrum, Harrisonia abyssinica, Juglans nigra, Juglans regia,"" Lamprothamnus zanguebaricus, Litchi ""chinensis, Ludia mauritania, Lycium barbarum, Lycium europaeum, Lycium ferocissimum, Malpighia glabra, Malus domestica (apel, apple), Malus floribunda, Malus sylvestris, Mangifera indica, Manilkara butugi, Manilkara sansibarensis, Manilkara sulcata, Manilkara zapta (sapodilla, sawo), Mespilus germanica, Mumusops bagshawei, Mimusops caffra, Mimusops elengi, Mimusops fruticosa, Mimusops kummel, Mimusops obtusifolia, Mimusops zeyheri, Momordica charantia (paria, bitter gourd(, Monodora grandidieri, Morus nigra, Muntingia calabura, Myrianthus arboreus,"" Nephelium lappaceum ""(rambutan, rambutan), Olea europaea subsp. europaea, Olea woodiana, Opilia amentacea, Opuntia ficus- indica, Oxyanthus zanguebaricus, Passiflora caerulea, Passiflora edulis, Passiflora ligularis, Pentarhopalopilia umbellulata, Persea americana (alpukat, avocado), Phoenix dactylifera (kurma, date-palm), Phyllanthus acidus, Physalis peruviana, Pouteria caimito, Pouteria campechiana, Pouteria sapota, Pouteria viridis, Prunus africanus, Prunus armeniaca, Prunus avium, Prunus domestica, Prunus persica, Prunus salicina, Psidium cattleianum, Psidium guajava, Punica granatum,"" ""Pyrus communis, Pyrus pyrifolia, Pyrus syriaca, Rubus idaeus, Rubus loganobaccus, Rubus lucidus, Salacia elegans, Sentalum album, Scaevola taccada, Sideroxylon inerma, Solanum aethiopicum, Solanum inacum, Solanum lycopersicum, Solanum macrocarpon, Solanum mauritianum, Solanum melongena, Solanum muricatum, Solanum nigrum, Solanum pseudocapsicum, Solanum seaforthianum, Sorocea bonplandii, Spondias dulcis, Spondias purpurea, Spondias tuberosa, Strychnos decussata, Strychnos henningsii, Strychnos potatorum, Strychnos pungens, Synsepalum dulcificum, Syzygium cumini,"" Syzygium jambos, Syzygium malaccense, Syzygium samarangense, Terminalia catappa, Theobroma cacao (kakao, cacao), Thevetia peruviana, Vaccinium corymbosum, Vangueria infausta, Vepris lanceolata, Vitis vinifera (anggur, grapevine), Xximenia caffra, Ziziphus joazeiro, Ziziphus jujuba, Ziziphus mauritania","buah (fruits (inc. pods)), media tanam (growing media associated with plants), tanah (soil)","""Africa: Algeria, Angola, Benin, Botswana, Burkina Faso, Burundi, Cameroon, Cape Verde, Comoros, DR Congo, Congo, Egypt, Eritrea, Eswatini, Ethiopia, Gabon, Ghana, Guinea, Guinea-Bissau, Ivory Coast, Kenya, Liberia, Libya, Madagascar, Malawi, Mali, Morocco, Mauritius, Mozambique, Namibia, Niger, Nigeria, Réunion, Saint Helena, Sao Tome and Principe, Senegal, Seychelles, South Africa, Sudan, Tanzania, Togo, Tunisia, Uganda, Zambia, Zimbabwe America: Argentina, Belize, Bolivia, Brazil, Chile, Colombia, Costa Rica, Ecuador, El Salvador, Guatemala, Honduras, Nicaragua, Panama, Paraguay, Peru, USA, Uruguay, Venezuela Asia:, Iran, Iraq, Israel, Jordan,"" ""Lebanon, Palestine, Saudi Arabia, Syria, Turkey, Yemen Europe: Albania, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, France, Germany, Greece, Guernsey,  Italy, Malta, Montenegro, North Macedonia, Portugal, Romania, Russia, Serbia, Slovenia, Spain, Switzerland, Ukraine Oceania: Australia"""`;
-
-    // Parse CSV data
-    function parseCSV(csv) {
-      const lines = csv.split('\n');
-      const result = [];
-      const headers = lines[0].split(',');
-      
-      for (let i = 1; i < lines.length; i++) {
-        const obj = {};
-        let currentline = lines[i];
-        let insideQuotes = false;
-        let currentField = '';
-        let fieldIndex = 0;
-        
-        for (let j = 0; j < currentline.length; j++) {
-          const char = currentline[j];
-          
-          if (char === '"') {
-            insideQuotes = !insideQuotes;
-          } else if (char === ',' && !insideQuotes) {
-            obj[headers[fieldIndex]] = currentField.trim();
-            currentField = '';
-            fieldIndex++;
-          } else {
-            currentField += char;
-          }
-        }
-        
-        // Add the last field
-        obj[headers[fieldIndex]] = currentField.trim();
-        result.push(obj);
+    // Data contoh untuk berbagai komoditas
+    const allCommodityData = [
+      // Data Apel (contoh)
+      {
+        no: 1,
+        commodity: "Apel",
+        jenis: "SERANGGA",
+        kategori: "A1",
+        nama: "Alsophila pometaria (Harris); (Syn. Anisopterix pometaria, Anisopteryx pometaria); (Lepidoptera: Geometridae); fall cankerworm",
+        inang: "Acer spp. (maple), Fraxinus spp., Hackberry, Juglan sp. (walnut), Malus domestica (apel, apple), Pelargonium (geranium), Pyrus communis (pir, pear), Quercus spp. (oak), Rose, Salix sp. (willow), Ulmus sp. (elm), other stone fruit",
+        media: "batang (stems, trunks, shoots, branches), buah (fruits), bunga (flowers, inflorescences, cones, calyx), daun (leaves)",
+        daerah: "America: Canada, USA"
+      },
+      {
+        no: 2,
+        commodity: "Apel",
+        jenis: "SERANGGA",
+        kategori: "A1",
+        nama: "Anastrepha fraterculus (Wiedemann); (Syn. Acrotoxa fraterculus (Weidemann), Anastrepha braziliensis Greene, Anastrepha costarukmanii Capoor); (Diptera: Tephritidae); South American fruitfly",
+        inang: "Actinidia chinensis (Chinese gooseberry), Actinidia deliciosa (kiwi, kiwifruit), Ampelocera hottlei, Annona cherimola (cherimoya), Annona muricata (sirsak, soursop), Annona squamosa (srikaya, sweetsop), Averrhoa carambola (belimbing, carambola, star-fruit)",
+        media: "buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)",
+        daerah: "America: Argentina, Belize, Bolivia, Brazil, Colombia, Costa Rica, Ecuador, El Salvador, French Guiana. Guatemala, Guyana, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, Suriname, Trinidad and Tobago, USA, Uruguay, Venezuela"
+      },
+      {
+        no: 3,
+        commodity: "Apel",
+        jenis: "SERANGGA",
+        kategori: "A1",
+        nama: "Anastrepha ludens (Loew); (Syn. Acrotoxa ludens (Loew), Anastrepha lathana Stone, Trypeta ludens Loew); (Diptera: Tephritidae); Mexican fruit fly",
+        inang: "Anacardium occidentale (jambu mete, cashew-nut), Annona cherimola (cherimoya), Annona liebmanniana, Annona muricata (sirsak, soursop), Annona reticulata (buah nona, srikaya), Annona squamosa (srikaya, sweetsop, bullock's heart, custard apple)",
+        media: "buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)",
+        daerah: "America: Belize, Costa Rica, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, USA"
+      },
+      // Data Anggur (contoh)
+      {
+        no: 1,
+        commodity: "Anggur",
+        jenis: "SERANGGA",
+        kategori: "A1",
+        nama: "Contoh OPTK Anggur 1",
+        inang: "Vitis vinifera (anggur, grapevine), tanaman inang lainnya",
+        media: "buah, daun, batang",
+        daerah: "Eropa: Italia, Prancis, Spanyol"
+      },
+      {
+        no: 2,
+        commodity: "Anggur",
+        jenis: "CENDAWAN",
+        kategori: "A2",
+        nama: "Contoh OPTK Anggur 2",
+        inang: "Vitis vinifera (anggur, grapevine)",
+        media: "daun, buah",
+        daerah: "Amerika: AS, Chili; Eropa: Italia, Prancis"
+      },
+      // Data Pir (contoh)
+      {
+        no: 1,
+        commodity: "Pir",
+        jenis: "SERANGGA",
+        kategori: "A1",
+        nama: "Contoh OPTK Pir 1",
+        inang: "Pyrus communis (pir, pear), tanaman inang lainnya",
+        media: "buah, daun",
+        daerah: "Asia: China, Korea; Eropa: Italia, Belanda"
+      },
+      {
+        no: 2,
+        commodity: "Pir",
+        jenis: "BAKTERI",
+        kategori: "A1",
+        nama: "Contoh OPTK Pir 2",
+        inang: "Pyrus communis (pir, pear)",
+        media: "batang, daun",
+        daerah: "Amerika: AS, Kanada; Eropa: Inggris, Jerman"
+      },
+      // Data Bawang Bombay (contoh)
+      {
+        no: 1,
+        commodity: "Bawang Bombay",
+        jenis: "CENDAWAN",
+        kategori: "A2",
+        nama: "Contoh OPTK Bawang Bombay 1",
+        inang: "Allium cepa (bawang bombay, onion)",
+        media: "umbi, daun",
+        daerah: "Asia: India, Indonesia; Afrika: Mesir"
+      },
+      // Data Bawang Putih (contoh)
+      {
+        no: 1,
+        commodity: "Bawang Putih",
+        jenis: "VIRUS",
+        kategori: "A1",
+        nama: "Contoh OPTK Bawang Putih 1",
+        inang: "Allium sativum (bawang putih, garlic)",
+        media: "umbi",
+        daerah: "Asia: China, Korea; Eropa: Spanyol"
+      },
+      {
+        no: 2,
+        commodity: "Bawang Putih",
+        jenis: "SERANGGA",
+        kategori: "A2",
+        nama: "Contoh OPTK Bawang Putih 2",
+        inang: "Allium sativum (bawang putih, garlic), tanaman inang lainnya",
+        media: "daun, umbi",
+        daerah: "Amerika: AS, Meksiko; Asia: Indonesia, Thailand"
       }
-      
-      return result;
-    }
+    ];
 
-    const optkData = parseCSV(csvData);
     let currentPage = 1;
     const rowsPerPage = 10;
-    let filteredData = [...optkData];
+    let filteredData = [...allCommodityData];
+    let currentCommodity = "all";
 
     // Populate table with data
     function populateTable(data, page = 1) {
@@ -268,7 +452,7 @@
       
       if (paginatedData.length === 0) {
         const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="7" class="no-results">Tidak ada data yang ditemukan</td>`;
+        row.innerHTML = `<td colspan="8" class="no-results">Tidak ada data yang ditemukan</td>`;
         tableBody.appendChild(row);
         return;
       }
@@ -276,13 +460,14 @@
       paginatedData.forEach(rowData => {
         const row = document.createElement('tr');
         row.innerHTML = `
-          <td>${rowData.No || ''}</td>
-          <td>${rowData['Jenis OPTK'] || ''}</td>
-          <td>${rowData.Kategori || ''}</td>
-          <td>${rowData['NAMA OPTK'] || ''}</td>
-          <td>${rowData['INANG/HOST'] || ''}</td>
-          <td>${rowData.MP || ''}</td>
-          <td>${rowData['DAERAH SEBAR'] || ''}</td>
+          <td>${rowData.no || ''}</td>
+          <td>${rowData.commodity || ''}</td>
+          <td>${rowData.jenis || ''}</td>
+          <td>${rowData.kategori || ''}</td>
+          <td>${rowData.nama || ''}</td>
+          <td>${rowData.inang || ''}</td>
+          <td>${rowData.media || ''}</td>
+          <td>${rowData.daerah || ''}</td>
         `;
         tableBody.appendChild(row);
       });
@@ -311,7 +496,15 @@
       }
       
       // Page buttons
-      for (let i = 1; i <= pageCount; i++) {
+      const maxVisiblePages = 5;
+      let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
+      let endPage = Math.min(pageCount, startPage + maxVisiblePages - 1);
+      
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
+      
+      for (let i = startPage; i <= endPage; i++) {
         const button = document.createElement('button');
         button.innerText = i;
         
@@ -339,26 +532,30 @@
       }
     }
 
-    // Search function
-    function searchTable() {
+    // Filter data based on search and filters
+    function filterData() {
       const searchValue = document.getElementById('searchInput').value.toLowerCase();
-      filterTable(searchValue);
-    }
-
-    // Filter function
-    function filterTable(searchValue = '') {
       const categoryValue = document.getElementById('categoryFilter').value;
       const statusValue = document.getElementById('statusFilter').value;
       
-      filteredData = optkData.filter(item => {
-        const matchesSearch = 
-          (item['NAMA OPTK'] && item['NAMA OPTK'].toLowerCase().includes(searchValue)) ||
-          (item['INANG/HOST'] && item['INANG/HOST'].toLowerCase().includes(searchValue)) ||
-          (item.MP && item.MP.toLowerCase().includes(searchValue)) ||
-          (item['DAERAH SEBAR'] && item['DAERAH SEBAR'].toLowerCase().includes(searchValue));
+      filteredData = allCommodityData.filter(item => {
+        // Filter by commodity tab
+        if (currentCommodity !== 'all' && item.commodity.toLowerCase() !== currentCommodity) {
+          return false;
+        }
         
-        const matchesCategory = categoryValue === '' || item['Jenis OPTK'] === categoryValue;
-        const matchesStatus = statusValue === '' || item.Kategori === statusValue;
+        // Filter by search value
+        const matchesSearch = 
+          (item.nama && item.nama.toLowerCase().includes(searchValue)) ||
+          (item.inang && item.inang.toLowerCase().includes(searchValue)) ||
+          (item.daerah && item.daerah.toLowerCase().includes(searchValue)) ||
+          (item.commodity && item.commodity.toLowerCase().includes(searchValue));
+        
+        // Filter by category
+        const matchesCategory = categoryValue === '' || item.jenis === categoryValue;
+        
+        // Filter by status
+        const matchesStatus = statusValue === '' || item.kategori === statusValue;
         
         return matchesSearch && matchesCategory && matchesStatus;
       });
@@ -367,9 +564,34 @@
       populateTable(filteredData, currentPage);
     }
 
-    // Initialize table
+    // Set up event listeners
+    function setupEventListeners() {
+      document.getElementById('searchInput').addEventListener('input', filterData);
+      document.getElementById('categoryFilter').addEventListener('change', filterData);
+      document.getElementById('statusFilter').addEventListener('change', filterData);
+      
+      // Tab buttons
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          currentCommodity = button.getAttribute('data-commodity');
+          filterData();
+        });
+      });
+      
+      // Download button
+      document.getElementById('downloadBtn').addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Fungsi download akan diimplementasikan sesuai dengan komoditas yang dipilih');
+      });
+    }
+
+    // Initialize the page
     document.addEventListener('DOMContentLoaded', () => {
-      populateTable(optkData, currentPage);
+      populateTable(allCommodityData, currentPage);
+      setupEventListeners();
     });
   </script>
 </body>
