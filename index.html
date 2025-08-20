@@ -23,7 +23,7 @@
     </div>
     <nav class="nav-list">
       <ul>
-        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html" class="active">Beranda</a></li>
         <li><a href="data.html">Data OPTK</a></li>
         <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
       </ul>
@@ -31,8 +31,9 @@
   </header>
 
   <main>
+    <!-- Content utama -->
     <div class="content">
-      <div class="content-description">
+      <div class="content-description fade-in">
         <h1 class="title">OPTK di Komoditas PSAT <br> Wilayah Kepulauan Riau</h1>
         <p>
           Website ini memuat informasi mengenai Organisme Pengganggu Tumbuhan Karantina (OPTK) 
@@ -41,18 +42,36 @@
         </p>
         <button onclick="window.location.href='buku-saku/buku-saku.pdf'">Lihat Buku Saku</button>
       </div>
-      <div class="content-image">
+
+      <div class="content-image fade-in">
         <img src="img/logo.png" alt="BKHIT Kepulauan Riau" />
       </div>
-<!-- Preview Buku Saku -->
-<section id="buku-saku" class="menu-section">
-  <h2>Preview Buku Saku</h2>
-  <iframe src="buku-saku/buku-saku.pdf"></iframe>
-</section>
+    </div>
+
+    <!-- Preview Buku Saku selalu di bawah -->
+    <section id="buku-saku" class="menu-section fade-in">
+      <h2>Preview Buku Saku</h2>
+      <iframe src="buku-saku/buku-saku.pdf"></iframe>
+    </section>
   </main>
 
   <footer id="kontak">
     <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
   </footer>
+
+  <!-- JS untuk fade-in -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = { threshold: 0.2 };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+  </script>
 </body>
 </html>
