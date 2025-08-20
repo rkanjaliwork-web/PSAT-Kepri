@@ -121,6 +121,18 @@ textarea:focus {
   margin: 1rem auto;
 }
 
+/* Tombol toggle preview (mobile) */
+.toggle-preview {
+  display: none;
+  background: #00796b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 0.8rem;
+}
+
 /* ===== Footer ===== */
 footer {
   background: #004d40;
@@ -173,7 +185,13 @@ footer {
     width: 95%;
   }
 
+  /* Tombol toggle preview di mobile */
+  .toggle-preview {
+    display: inline-block;
+  }
+
   .iframe-container {
+    display: none;
     max-width: 100%;
   }
 }
