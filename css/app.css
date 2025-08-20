@@ -84,3 +84,66 @@ footer { background: #004d40; color: white; text-align: center; padding: 1.5rem;
 /* Fade-in Animasi */
 .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
 .fade-in.show { opacity: 1; transform: translateY(0); }
+/* ===== Perbaikan Scroll untuk Preview Buku Saku ===== */
+.iframe-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.iframe-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iframe-container object {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: auto; /* Memungkinkan scrolling */
+}
+
+/* Tambahan untuk memastikan object PDF bisa di-scroll */
+.iframe-container.active {
+  display: flex;
+  max-height: 80vh; /* Batasi tinggi maksimum */
+}
+
+.pdf-alternative {
+  text-align: center;
+  padding: 1rem;
+  background: #e8f5e9;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.pdf-alternative a {
+  color: #004d40;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.pdf-alternative a:hover {
+  text-decoration: underline;
+}
+
+/* Memastikan konten utama tidak overflow */
+main {
+  overflow-x: hidden;
+}
+
+/* Perbaikan tambahan untuk responsivitas */
+@media (max-width: 768px) {
+  .iframe-container {
+    max-height: 70vh; /* Tinggi lebih kecil di mobile */
+  }
+  
+  .iframe-container object {
+    height: 500px; /* Tinggi tetap untuk mobile */
+  }
+}
