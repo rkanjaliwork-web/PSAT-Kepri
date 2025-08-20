@@ -11,7 +11,7 @@
 <body>
   <header class="navbar-container">
     <div class="logo">
-      <img src="img/logo.png" alt="Logo Karantina" onerror="this.src='https://via.placeholder.com/150x50/004d40/ffffff?text=LOGO'" />
+      <img src="https://via.placeholder.com/150x50/004d40/ffffff?text=LOGO" alt="Logo Karantina" />
     </div>
     <button class="hamburger" id="hamburger">
       <span></span>
@@ -45,25 +45,16 @@
     <section class="menu-section fade-in">
       <h2>Preview Buku Saku</h2>
       <button class="toggle-preview" id="togglePreview">Tampilkan Preview Buku Saku</button>
-      <div class="iframe-wrapper">
-        <div class="iframe-container" id="iframeContainer">
-          <!-- Embed PDF dari folder lokal -->
-          <object data="buku-saku/buku-saku.pdf" type="application/pdf" width="100%" height="600px">
-            <div class="pdf-alternative">
-              <p>Browser Anda tidak mendukung preview PDF. 
-                <a href="buku-saku/buku-saku.pdf" target="_blank">Klik di sini untuk mengunduh buku saku</a>.
-              </p>
-            </div>
-          </object>
-        </div>
+      <div class="iframe-container" id="iframeContainer">
+        <iframe src="https://docs.google.com/document/d/1VPKx7-Sn6Pez+ivv3V_xe-7-RWnALsJ0xq5j-7p2yE0/preview" width="100%" height="600px"></iframe>
       </div>
     </section>
 
     <!-- Kotak Saran (Google Form) -->
     <section class="menu-section fade-in">
       <h2>Kotak Saran</h2>
-      <form action="#" method="post">
-        <textarea name="saran" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
+      <form action="https://docs.google.com/forms/d/e/FORM_ID/formResponse" method="post" target="_blank">
+        <textarea name="entry.123456" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
         <br>
         <button type="submit">Kirim Saran</button>
       </form>
@@ -74,67 +65,6 @@
     <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
   </footer>
 
-  <script>
-    // Fade-in animation
-    document.addEventListener('DOMContentLoaded', function() {
-      const faders = document.querySelectorAll('.fade-in');
-      const appearOptions = { threshold: 0.2 };
-      const appearOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, appearOptions);
-      
-      faders.forEach(fader => appearOnScroll.observe(fader));
-
-      // Toggle preview buku saku
-      const toggleBtn = document.getElementById('togglePreview');
-      const iframeContainer = document.getElementById('iframeContainer');
-
-      if (toggleBtn && iframeContainer) {
-        toggleBtn.addEventListener('click', () => {
-          if (iframeContainer.classList.contains('active')) {
-            iframeContainer.classList.remove('active');
-            toggleBtn.textContent = 'Tampilkan Preview Buku Saku';
-          } else {
-            iframeContainer.classList.add('active');
-            toggleBtn.textContent = 'Sembunyikan Preview Buku Saku';
-          }
-        });
-      }
-
-      // Hamburger menu functionality
-      const hamburger = document.getElementById('hamburger');
-      const navList = document.getElementById('navList');
-
-      if (hamburger && navList) {
-        hamburger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          navList.classList.toggle('active');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-          if (!hamburger.contains(e.target) && !navList.contains(e.target)) {
-            navList.classList.remove('active');
-          }
-        });
-
-        // Close menu when clicking on a link
-        const navLinks = navList.querySelectorAll('a');
-        navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            navList.classList.remove('active');
-          });
-        });
-      }
-
-      // Ensure page loads at the top
-      window.scrollTo(0, 0);
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
