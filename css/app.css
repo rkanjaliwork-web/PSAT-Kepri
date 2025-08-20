@@ -1,126 +1,281 @@
-  <link rel="stylesheet" href="css/app.css" />
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-</head>
-<body>
-  <header class="navbar-container">
-    <div class="logo">
-      <img src="img/logo.png" alt="Logo Karantina" />
-    </div>
-    <button class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav class="nav-list" id="navList">
-      <ul>
-        <li><a href="index.html" class="active">Beranda</a></li>
-        <li><a href="data.html">Data OPTK</a></li>
-        <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
-      </ul>
-    </nav>
-  </header>
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+  font-family: 'Quicksand', sans-serif;
+  background: #fdfdfd;
+  color: #333;
+}
 
-  <main>
-    <!-- Content utama -->
-    <div class="content fade-in">
-      <div class="content-description">
-        <h1 class="title">OPTK di Komoditas PSAT <br> Wilayah Kepulauan Riau</h1>
-        <p>
-          Website ini memuat informasi mengenai Organisme Pengganggu Tumbuhan Karantina (OPTK) 
-          pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Kepulauan Riau. 
-          Data meliputi apel, anggur, pir, bawang bombay, dan bawang putih.
-        </p>
-        <button onclick="window.open('buku-saku/buku-saku.pdf', '_blank')">Buka Buku Saku</button>
-      </div>
-    </div>
+/* ===== Navbar ===== */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #004d40;
+  padding: 1rem 5%;
+  color: white;
+  width: 100%;
+  flex-wrap: wrap;
+}
 
-    <!-- Preview Buku Saku (collapsible di mobile) -->
-    <section class="menu-section fade-in">
-      <h2>Preview Buku Saku</h2>
-      <button class="toggle-preview" id="togglePreview">Tampilkan Preview Buku Saku</button>
-      <div class="iframe-wrapper">
-        <div class="iframe-container" id="iframeContainer">
-          <object data="buku-saku/buku-saku.pdf" type="application/pdf" width="100%" height="600px">
-            <div class="pdf-alternative">
-              <p>Browser Anda tidak mendukung preview PDF. 
-                <a href="buku-saku/buku-saku.pdf" target="_blank">Klik di sini untuk mengunduh buku saku</a>.
-              </p>
-            </div>
-          </object>
-        </div>
-      </div>
-    </section>
+.navbar-container .logo img {
+  height: 50px;
+  max-width: 100%;
+}
 
-    <!-- Kotak Saran (Google Form) -->
-    <section class="menu-section fade-in">
-      <h2>Kotak Saran</h2>
-      <form action="https://docs.google.com/forms/d/e/FORM_ID/formResponse" method="post" target="_blank">
-        <textarea name="entry.123456" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
-        <br>
-        <button type="submit">Kirim Saran</button>
-      </form>
-    </section>
-  </main>
+.nav-list ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
 
-  <footer>
-    <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
-  </footer>
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
 
-  <script>
-    // Fade-in animation
-    document.addEventListener('DOMContentLoaded', function() {
-      const faders = document.querySelectorAll('.fade-in');
-      const appearOptions = { threshold: 0.2 };
-      const appearOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, appearOptions);
-      
-      faders.forEach(fader => appearOnScroll.observe(fader));
+.nav-list a.active {
+  text-decoration: underline;
+}
 
-      // Toggle preview buku saku
-      const toggleBtn = document.getElementById('togglePreview');
-      const iframeContainer = document.getElementById('iframeContainer');
+/* Hamburger Menu (Mobile Only) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
 
-      if (toggleBtn && iframeContainer) {
-        toggleBtn.addEventListener('click', () => {
-          iframeContainer.classList.toggle('active');
-          toggleBtn.textContent = iframeContainer.classList.contains('active') ? 
-            'Sembunyikan Preview Buku Saku' : 'Tampilkan Preview Buku Saku';
-        });
-      }
+.hamburger span {
+  width: 2rem;
+  height: 0.25rem;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s linear;
+}
 
-      // Hamburger menu functionality
-      const hamburger = document.getElementById('hamburger');
-      const navList = document.getElementById('navList');
+/* ===== Main Content ===== */
+main {
+  padding: 2rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
 
-      if (hamburger && navList) {
-        hamburger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          navList.classList.toggle('active');
-        });
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
 
-        document.addEventListener('click', (e) => {
-          if (!hamburger.contains(e.target) && !navList.contains(e.target)) {
-            navList.classList.remove('active');
-          }
-        });
+.content-description {
+  flex: 1 1 55%;
+}
 
-        const navLinks = navList.querySelectorAll('a');
-        navLinks.forEach(link => {
-          link.addEventListener('click', () => navList.classList.remove('active'));
-        });
-      }
+.content-description .title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #004d40;
+}
 
-      window.scrollTo(0, 0);
-    });
-  </script>
-</body>
-</html>
+.content-description p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+button {
+  background: #004d40;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #00796b;
+  transform: translateY(-3px);
+}
+
+/* ===== Preview Buku Saku ===== */
+.menu-section {
+  width: 100%;
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.menu-section h2 {
+  color: #004d40;
+  margin-bottom: 1rem;
+}
+
+.iframe-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.iframe-container iframe {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Tombol toggle preview (mobile) */
+.toggle-preview {
+  display: none;
+  background: #00796b;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 auto 1rem;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* ===== Kotak Saran ===== */
+textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: 'Quicksand', sans-serif;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #004d40;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #004d40;
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1024px) {
+  .content-description .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0.8rem 5%;
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-list {
+    display: none;
+    width: 100%;
+  }
+  
+  .nav-list.active {
+    display: block;
+  }
+  
+  .nav-list ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+  }
+  
+  .nav-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .content-description .title {
+    font-size: 1.5rem;
+  }
+
+  .toggle-preview {
+    display: block;
+  }
+
+  .iframe-container {
+    display: none;
+  }
+  
+  .iframe-container.active {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container .logo img {
+    height: 40px;
+  }
+  
+  .content-description .title {
+    font-size: 1.4rem;
+  }
+  
+  .content-description p {
+    font-size: 0.9rem;
+  }
+  
+  button {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* ===== Fade-in Animasi ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
