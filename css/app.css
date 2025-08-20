@@ -163,3 +163,21 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+.pdf-preview {
+  width: 100%;
+  max-width: 900px;  /* batas maksimal agar desktop tidak kelebaran */
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto; /* center iframe di desktop */
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .pdf-preview {
+    width: 100%;   /* full width di HP */
+    height: 400px; /* lebih nyaman di layar kecil */
+  }
+}
