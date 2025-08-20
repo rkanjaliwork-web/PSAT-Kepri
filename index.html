@@ -4,15 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>OPTK - PSAT Kepulauan Riau</title>
-   <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
   <header class="navbar-container">
     <div class="logo">
-      <img src="https://via.placeholder.com/150x50/004d40/ffffff?text=LOGO" alt="Logo Karantina" />
+      <img src="img/logo.png" alt="Logo Karantina" onerror="this.src='https://via.placeholder.com/150x50/004d40/ffffff?text=LOGO'" />
     </div>
     <button class="hamburger" id="hamburger">
       <span></span>
@@ -42,20 +41,29 @@
       </div>
     </div>
 
-     <!-- Preview Buku Saku (collapsible di mobile) -->
+    <!-- Preview Buku Saku (collapsible di mobile) -->
     <section class="menu-section fade-in">
       <h2>Preview Buku Saku</h2>
-      <button class="toggle-preview">Tampilkan Preview Buku Saku</button>
-      <div class="iframe-container">
-        <iframe src="buku-saku/buku-saku.pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px;"></iframe>
+      <button class="toggle-preview" id="togglePreview">Tampilkan Preview Buku Saku</button>
+      <div class="iframe-wrapper">
+        <div class="iframe-container" id="iframeContainer">
+          <!-- Embed PDF dari folder lokal -->
+          <object data="buku-saku/buku-saku.pdf" type="application/pdf" width="100%" height="600px">
+            <div class="pdf-alternative">
+              <p>Browser Anda tidak mendukung preview PDF. 
+                <a href="buku-saku/buku-saku.pdf" target="_blank">Klik di sini untuk mengunduh buku saku</a>.
+              </p>
+            </div>
+          </object>
+        </div>
       </div>
     </section>
 
     <!-- Kotak Saran (Google Form) -->
     <section class="menu-section fade-in">
       <h2>Kotak Saran</h2>
-      <form action="https://docs.google.com/forms/d/e/FORM_ID/formResponse" method="post" target="_blank">
-        <textarea name="entry.123456" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
+      <form action="#" method="post">
+        <textarea name="saran" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
         <br>
         <button type="submit">Kirim Saran</button>
       </form>
