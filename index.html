@@ -4,16 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>OPTK - PSAT Kepulauan Riau</title>
-   <!-- CSS -->
+
+  <!-- CSS -->
   <link rel="stylesheet" href="css/app.css" />
 
+  <!-- Fonts & Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
   <header class="navbar-container">
     <div class="logo">
-      <img src="https://via.placeholder.com/150x50/004d40/ffffff?text=LOGO" alt="Logo Karantina" />
+      <img src="img/logo.png" alt="Logo Karantina" />
     </div>
     <button class="hamburger" id="hamburger">
       <span></span>
@@ -43,13 +45,12 @@
       </div>
     </div>
 
-<!-- Preview Buku Saku (collapsible di mobile) -->
+    <!-- Preview Buku Saku (collapsible di mobile) -->
     <section class="menu-section fade-in">
       <h2>Preview Buku Saku</h2>
       <button class="toggle-preview" id="togglePreview">Tampilkan Preview Buku Saku</button>
       <div class="iframe-wrapper">
         <div class="iframe-container" id="iframeContainer">
-          <!-- Embed PDF dari folder lokal -->
           <object data="buku-saku/buku-saku.pdf" type="application/pdf" width="100%" height="600px">
             <div class="pdf-alternative">
               <p>Browser Anda tidak mendukung preview PDF. 
@@ -60,6 +61,7 @@
         </div>
       </div>
     </section>
+
     <!-- Kotak Saran (Google Form) -->
     <section class="menu-section fade-in">
       <h2>Kotak Saran</h2>
@@ -97,13 +99,9 @@
 
       if (toggleBtn && iframeContainer) {
         toggleBtn.addEventListener('click', () => {
-          if (iframeContainer.classList.contains('active')) {
-            iframeContainer.classList.remove('active');
-            toggleBtn.textContent = 'Tampilkan Preview Buku Saku';
-          } else {
-            iframeContainer.classList.add('active');
-            toggleBtn.textContent = 'Sembunyikan Preview Buku Saku';
-          }
+          iframeContainer.classList.toggle('active');
+          toggleBtn.textContent = iframeContainer.classList.contains('active') ? 
+            'Sembunyikan Preview Buku Saku' : 'Tampilkan Preview Buku Saku';
         });
       }
 
@@ -117,23 +115,18 @@
           navList.classList.toggle('active');
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', (e) => {
           if (!hamburger.contains(e.target) && !navList.contains(e.target)) {
             navList.classList.remove('active');
           }
         });
 
-        // Close menu when clicking on a link
         const navLinks = navList.querySelectorAll('a');
         navLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            navList.classList.remove('active');
-          });
+          link.addEventListener('click', () => navList.classList.remove('active'));
         });
       }
 
-      // Ensure page loads at the top
       window.scrollTo(0, 0);
     });
   </script>
