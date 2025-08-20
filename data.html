@@ -13,264 +13,259 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
   
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Quicksand', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f9fa;
-    }
-    
+ <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+  }
+
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: #2e7d32; /* hijau navbar */
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .logo img {
+    height: 50px;
+  }
+
+  .nav-list ul {
+    display: flex;
+    list-style: none;
+  }
+
+  .nav-list li {
+    margin-left: 2rem;
+  }
+
+  .nav-list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .nav-list a:hover, .nav-list a.active {
+    color: #66bb6a; /* hijau muda */
+  }
+
+  main {
+    padding: 2rem 5%;
+  }
+
+  .data-container {
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    color: #2e7d32; /* hijau judul */
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    margin-bottom: 1.5rem;
+    color: #555;
+  }
+
+  .commodity-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 1rem;
+    background: #e9ecef;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .tab-btn.active, .tab-btn:hover {
+    background: #388e3c; /* hijau tab aktif */
+    color: white;
+  }
+
+  .search-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .search-box {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .filter-select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    font-weight: bold;
+    color: #2e7d32; /* hijau header */
+  }
+
+  tr:hover {
+    background-color: #f8f9fa;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pagination button {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  .pagination button.active {
+    background-color: #388e3c;
+    color: white;
+    border-color: #388e3c;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
+    color: #6c757d;
+  }
+
+  .download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #43a047; /* hijau download */
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+
+  .download-btn:hover {
+    background-color: #388e3c;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    background-color: #2e7d32;
+    color: white;
+    margin-top: 2rem;
+  }
+
+  .loading {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #388e3c;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @media (max-width: 768px) {
     .navbar-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      background-color: #4CAF50;
-      color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .logo img {
-      height: 50px;
-    }
-    
-    .nav-list ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav-list li {
-      margin-left: 2rem;
-    }
-    
-    .nav-list a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    .nav-list a:hover, .nav-list a.active {
-      color: #4CAF50;
-    }
-    
-    main {
-      padding: 2rem 5%;
-    }
-    
-    .data-container {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    h2 {
-      color: #2c3e50;
-      margin-bottom: 1rem;
-    }
-    
-    .description {
-      margin-bottom: 1.5rem;
-      color: #555;
-    }
-    
-    .commodity-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .tab-btn {
-      padding: 0.5rem 1rem;
-      background: var(--main-green);
-  color: white;
-}
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--main-green);
-  color: white;
-}
-    }
-    
-    .search-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .search-box {
-      flex: 1;
-      min-width: 250px;
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .filter-select {
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background-color: white;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .table-container {
-      overflow-x: auto;
-      margin-bottom: 1.5rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      max-height: 500px;
-      overflow-y: auto;
-    }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 800px;
-    }
-    
-    th, td {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-    
-    th {
-      background-color: #f2f2f2;
-      position: sticky;
-      top: 0;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-    
-    tr:hover {
-      background-color: #f8f9fa;
-    }
-    
-    .pagination {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .pagination button {
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #ddd;
-      background-color: white;
-      cursor: pointer;
-      border-radius: 4px;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .pagination button.active {
-      background-color: ##4CAF50;
-      color: white;
-      border-color: ##4CAF50;
-    }
-    
-    .no-results {
-      text-align: center;
-      padding: 2rem;
-      font-style: italic;
-      color: #6c757d;
-    }
-    
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-       background-color: var(--main-green);
-  color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: 500;
-      transition: background-color 0.3s;
-    }
-    
- /* Tombol download */
-.download-btn {
-  background-color: var(--main-green);
-  color: white;
-    
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #2c3e50;
-      color: white;
-      margin-top: 2rem;
-    }
-    
-    .loading {
-      display: none;
-      text-align: center;
+      flex-direction: column;
       padding: 1rem;
     }
     
-    .loading-spinner {
-      border: 4px solid #f3f3f3;
-       border-top: 4px solid var(--main-green);
-}
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto;
+    .nav-list {
+      margin-top: 1rem;
     }
     
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .nav-list ul {
+      flex-direction: column;
+      align-items: center;
     }
     
-    @media (max-width: 768px) {
-      .navbar-container {
-        flex-direction: column;
-        padding: 1rem;
-      }
-      
-      .nav-list {
-        margin-top: 1rem;
-      }
-      
-      .nav-list ul {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .nav-list li {
-        margin: 0.5rem 0;
-      }
-      
-      .search-container {
-        flex-direction: column;
-      }
-      
-      th, td {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-      }
+    .nav-list li {
+      margin: 0.5rem 0;
     }
-  </style>
+    
+    .search-container {
+      flex-direction: column;
+    }
+    
+    th, td {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
 </head>
 <body>
   <header class="navbar-container">
