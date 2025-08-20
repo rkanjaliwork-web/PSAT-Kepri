@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data OPTK</title>
+  <title>Data OPTK - PSAT Kepulauan Riau</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/app.css" />
 
-  <!-- DataTables CSS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
 
-  <!-- jQuery & DataTables -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
 </head>
 <body>
   <header class="navbar-container">
@@ -23,67 +24,30 @@
     <nav class="nav-list">
       <ul>
         <li><a href="index.html">Beranda</a></li>
-        <li><a href="data.html">Data OPTK</a></li>
+        <li><a href="data.html" class="active">Data OPTK</a></li>
         <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
+        <li><a href="#kontak">Kontak</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <h2>Data OPTK - Apel, Anggur, Pir, Bawang Bombay, Bawang Putih</h2>
-    <table id="optkTable" class="display" style="width:100%">
-      <thead>
-        <tr>
-          <th>Komoditas</th>
-          <th>Nama OPTK</th>
-          <th>Nama Ilmiah</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <section class="menu-section">
+      <h2>Data OPTK per Komoditas</h2>
+      <p>Pilih komoditas untuk melihat daftar OPTK dalam format CSV:</p>
+      <ul>
+        <li><a href="data/apel.csv" target="_blank">🍎 Apel</a></li>
+        <li><a href="data/anggur.csv" target="_blank">🍇 Anggur</a></li>
+        <li><a href="data/pir.csv" target="_blank">🍐 Pir</a></li>
+        <li><a href="data/bawang_bombay.csv" target="_blank">🧅 Bawang Bombay</a></li>
+        <li><a href="data/bawang_putih.csv" target="_blank">🧄 Bawang Putih</a></li>
+      </ul>
+      <p>📊 Kamu juga bisa buka file CSV ini langsung di <b>Excel / Google Spreadsheet</b> untuk mempermudah pencarian.</p>
+    </section>
   </main>
 
-  <script>
-    $(document).ready(function () {
-      // Load CSV files (gabung beberapa jadi satu tabel)
-      const files = [
-        { name: "Apel", path: "data/apel.csv" },
-        { name: "Anggur", path: "data/anggur.csv" },
-        { name: "Pir", path: "data/pir.csv" },
-        { name: "Bawang Bombay", path: "data/bawang_bombay.csv" },
-        { name: "Bawang Putih", path: "data/bawang_putih.csv" }
-      ];
-
-      function loadCSV(file, callback) {
-        $.get(file.path, function (data) {
-          const rows = data.trim().split("\n").slice(1); // skip header
-          rows.forEach(row => {
-            const cols = row.split(",");
-            $("#optkTable tbody").append(
-              `<tr>
-                <td>${file.name}</td>
-                <td>${cols[0]}</td>
-                <td>${cols[1]}</td>
-                <td>${cols[2]}</td>
-              </tr>`
-            );
-          });
-          callback();
-        });
-      }
-
-      let loaded = 0;
-      files.forEach(file => {
-        loadCSV(file, function () {
-          loaded++;
-          if (loaded === files.length) {
-            $("#optkTable").DataTable();
-          }
-        });
-      });
-    });
-  </script>
+  <footer id="kontak">
+    <p>© 2025 Karantina Pertanian Kepulauan Riau</p>
+  </footer>
 </body>
 </html>
