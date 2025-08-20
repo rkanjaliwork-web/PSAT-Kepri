@@ -156,7 +156,7 @@ button:hover {
   align-items: center;
 }
 
-.iframe-container object {
+.iframe-container embed {
   max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
