@@ -44,11 +44,19 @@
       </div>
     </div>
 
-    <!-- Kotak Saran -->
+    <!-- Preview Buku Saku -->
+    <section class="menu-section fade-in">
+      <h2>Preview Buku Saku</h2>
+      <div class="iframe-container">
+        <iframe src="buku-saku/buku-saku.pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px;"></iframe>
+      </div>
+    </section>
+
+    <!-- Kotak Saran (Google Form) -->
     <section class="menu-section fade-in">
       <h2>Kotak Saran</h2>
-      <form action="https://example.com/submit-saran" method="post">
-        <textarea name="saran" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
+      <form action="https://docs.google.com/forms/d/e/FORM_ID/formResponse" method="post" target="_blank">
+        <textarea name="entry.123456" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
         <br>
         <button type="submit">Kirim Saran</button>
       </form>
@@ -71,7 +79,4 @@
         }
       });
     }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
-  </script>
-</body>
-</html>
+    faders.forEac
