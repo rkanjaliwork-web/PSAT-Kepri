@@ -11,7 +11,6 @@ html, body {
   font-family: 'Quicksand', sans-serif;
   background: #fdfdfd;
   color: #333;
-  line-height: 1.6;
 }
 
 /* ===== Navbar ===== */
@@ -77,7 +76,6 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  overflow-x: hidden;
 }
 
 .content {
@@ -97,7 +95,6 @@ main {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #004d40;
-  line-height: 1.3;
 }
 
 .content-description p {
@@ -131,9 +128,6 @@ button:hover {
   background: #f5f5f5;
   border-radius: 10px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .menu-section h2 {
@@ -141,44 +135,18 @@ button:hover {
   margin-bottom: 1rem;
 }
 
-/* Wrapper untuk iframe agar bisa diatur posisinya */
-.iframe-wrapper {
+.iframe-container {
   width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
-.iframe-container {
-  width: 100%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.iframe-container embed {
+.iframe-container iframe {
   max-width: 100%;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin-bottom: 1rem;
-}
-
-.pdf-alternative {
-  text-align: center;
-  padding: 1rem;
-  background: #e8f5e9;
-  border-radius: 5px;
-  width: 100%;
-}
-
-.pdf-alternative a {
-  color: #004d40;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.pdf-alternative a:hover {
-  text-decoration: underline;
 }
 
 /* Tombol toggle preview (mobile) */
@@ -195,13 +163,6 @@ button:hover {
 }
 
 /* ===== Kotak Saran ===== */
-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 textarea {
   width: 100%;
   max-width: 500px;
@@ -285,10 +246,6 @@ footer {
   
   .iframe-container.active {
     display: flex;
-  }
-  
-  .menu-section {
-    padding: 1rem;
   }
 }
 
