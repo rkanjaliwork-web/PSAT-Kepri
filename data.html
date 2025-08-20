@@ -14,234 +14,230 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
   
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Quicksand', sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f9fa;
-    }
-    
-    .navbar-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 5%;
-      background-color: #2c3e50;
-      color: white;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .logo img {
-      height: 50px;
-    }
-    
-    .nav-list ul {
-      display: flex;
-      list-style: none;
-    }
-    
-    .nav-list li {
-      margin-left: 2rem;
-    }
-    
-    .nav-list a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    
-    .nav-list a:hover, .nav-list a.active {
-      color: #4CAF50;
-    }
-    
-    main {
-      padding: 2rem 5%;
-    }
-    
-    .data-container {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    }
-    
-    h2 {
-      color: #2c3e50;
-      margin-bottom: 1rem;
-    }
-    
-    .description {
-      margin-bottom: 1.5rem;
-      color: #555;
-    }
-    
-    .commodity-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .tab-btn {
-      padding: 0.5rem 1rem;
-      background: #e9ecef;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 500;
-      transition: all 0.3s;
-    }
-    
-    .tab-btn.active, .tab-btn:hover {
-      background: #4CAF50;
-      color: white;
-    }
-    
-    .search-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .search-box {
-      flex: 1;
-      min-width: 250px;
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .filter-select {
-      padding: 0.75rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background-color: white;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .table-container {
-      overflow-x: auto;
-      margin-bottom: 1.5rem;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 800px;
-    }
-    
-    th, td {
-      padding: 0.75rem 1rem;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-    
-    th {
-      background-color: #f2f2f2;
-      position: sticky;
-      top: 0;
-      font-weight: bold;
-      color: #2c3e50;
-    }
-    
-    tr:hover {
-      background-color: #f8f9fa;
-    }
-    
-    .pagination {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-    
-    .pagination button {
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #ddd;
-      background-color: white;
-      cursor: pointer;
-      border-radius: 4px;
-      font-family: 'Quicksand', sans-serif;
-    }
-    
-    .pagination button.active {
-      background-color: #4CAF50;
-      color: white;
-      border-color: #4CAF50;
-    }
-    
-    .no-results {
-      text-align: center;
-      padding: 2rem;
-      font-style: italic;
-      color: #6c757d;
-    }
-    
-    .download-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background-color: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: 500;
-      transition: background-color 0.3s;
-    }
-    
-    .download-btn:hover {
-      background-color: #45a049;
-    }
-    
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #2c3e50;
-      color: white;
-      margin-top: 2rem;
-    }
-    
-    @media (max-width: 768px) {
-      .navbar-container {
-        flex-direction: column;
-        padding: 1rem;
-      }
-      
-      .nav-list {
-        margin-top: 1rem;
-      }
-      
-      .nav-list ul {
-        flex-direction: column;
-        align-items: center;
-      }
-      
-      .nav-list li {
-        margin: 0.5rem 0;
-      }
-      
-      .search-container {
-        flex-direction: column;
-      }
-      
-      th, td {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-      }
-    }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: #004d40; /* Warna navbar disamakan dengan logo */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo img {
+  height: 40px; /* ukuran logo disesuaikan */
+}
+
+.nav-list ul {
+  display: flex;
+  list-style: none;
+}
+
+.nav-list li {
+  margin-left: 2rem;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-list a:hover, .nav-list a.active {
+  color: #00796b; /* hover dan active tombol hijau */
+}
+
+/* Main content */
+main {
+  padding: 2rem 5%;
+}
+
+.data-container {
+  background: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #004d40;
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Tabs */
+.commodity-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  background: #e9ecef;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: #00796b;
+  color: white;
+}
+
+/* Search & filter */
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-box, .filter-select {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Quicksand', sans-serif;
+  background-color: white;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  position: sticky;
+  top: 0;
+  font-weight: bold;
+  color: #004d40;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.pagination button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.pagination button.active {
+  background-color: #00796b;
+  color: white;
+  border-color: #00796b;
+}
+
+/* Download button */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #00796b;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+  background-color: #004d40;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #004d40;
+  color: white;
+  margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .nav-list {
+    margin-top: 1rem;
+  }
+
+  .nav-list ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-list li {
+    margin: 0.5rem 0;
+  }
+
+  .search-container {
+    flex-direction: column;
+  }
+
+  th, td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}
+
   </style>
 </head>
 <body>
