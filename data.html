@@ -27,7 +27,7 @@ body {
   background-color: #f8f9fa;
 }
 
-//* ===== Navbar ===== */
+/* ===== Navbar ===== */
 .navbar-container {
   display: flex;
   justify-content: space-between;
@@ -39,8 +39,8 @@ body {
   flex-wrap: wrap;
 }
 
-.navbar-container .logo img {
-  height: 50px;
+.navbar-container img {
+  height: 40px; /* kecilkan logo */
   max-width: 100%;
 }
 
@@ -83,6 +83,27 @@ body {
   border-radius: 10px;
   transition: all 0.3s linear;
 }
+
+/* Main content */
+main {
+  padding: 2rem 5%;
+}
+
+/* ... rest of your CSS tetap sama ... */
+
+  </style>
+</head>
+<body>
+  <header class="navbar-container">
+    <img src="img/logo.png" alt="Logo Karantina" />
+    <nav class="nav-list">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="data.html" class="active">Data OPTK</a></li>
+        <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
+      </ul>
+    </nav>
+  </header>
 /* Main content */
 main {
   padding: 2rem 5%;
