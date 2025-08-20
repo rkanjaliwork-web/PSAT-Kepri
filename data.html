@@ -4,121 +4,290 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data OPTK - PSAT Kepulauan Riau</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
-  
-   <style>
-    /* Styling tambahan untuk tabel dan pencarian */
-    .data-container {
-      padding: 20px;
-      max-width: 1200px;
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background: linear-gradient(135deg, #2c3e50 0%, #1a2530 100%);
+      color: white;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 50px;
+      margin-right: 15px;
+    }
+    
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .nav-list ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-list li {
+      margin-left: 2rem;
+    }
+    
+    .nav-list a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+    
+    .nav-list a:hover, .nav-list a.active {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #4CAF50;
+    }
+    
+    main {
+      padding: 2rem 5%;
+      max-width: 1400px;
       margin: 0 auto;
     }
     
+    .header-section {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+      border-radius: 10px;
+      color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .header-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .header-section p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .menu-section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    
+    .menu-section h2 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #3498db;
+    }
+    
+    .commodity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .commodity-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border: 1px solid #eaeaea;
+    }
+    
+    .commodity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    
+    .card-header {
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    
+    .card-content {
+      padding: 1.5rem;
+      border-top: 1px solid #eaeaea;
+    }
+    
+    .card-content h3 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-content p {
+      color: #7f8c8d;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    
+    .download-btn {
+      display: block;
+      text-align: center;
+      padding: 0.75rem;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    
+    .download-btn:hover {
+      background: #2980b9;
+    }
+    
+    .data-section {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+    
+    .data-section h2 {
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #3498db;
+    }
+    
     .search-container {
-      margin-bottom: 20px;
       display: flex;
-      gap: 10px;
       flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
     }
     
     .search-box {
       flex: 1;
       min-width: 250px;
-      padding: 10px 15px;
+      padding: 0.75rem 1rem;
       border: 1px solid #ddd;
       border-radius: 4px;
-      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
     }
     
     .filter-select {
-      padding: 10px;
+      padding: 0.75rem;
       border: 1px solid #ddd;
       border-radius: 4px;
       background-color: white;
-      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
     }
     
     .table-container {
       overflow-x: auto;
-      margin-bottom: 30px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
     }
     
     table {
       width: 100%;
       border-collapse: collapse;
-      font-family: 'Quicksand', sans-serif;
+      min-width: 800px;
     }
     
     th, td {
-      padding: 12px 15px;
+      padding: 1rem;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #eaeaea;
     }
     
     th {
-      background-color: #f2f2f2;
-      position: sticky;
-      top: 0;
-      font-weight: bold;
+      background-color: #f8f9fa;
+      font-weight: 600;
+      color: #2c3e50;
     }
     
     tr:hover {
-      background-color: #f5f5f5;
+      background-color: #f8f9fa;
     }
     
     .pagination {
       display: flex;
       justify-content: center;
-      margin-top: 20px;
-      gap: 5px;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
     }
     
     .pagination button {
-      padding: 8px 12px;
+      padding: 0.5rem 1rem;
       border: 1px solid #ddd;
       background-color: white;
       cursor: pointer;
       border-radius: 4px;
+      transition: background 0.3s;
+    }
+    
+    .pagination button:hover {
+      background: #f1f1f1;
     }
     
     .pagination button.active {
-      background-color: #4CAF50;
+      background: #3498db;
       color: white;
-      border-color: #4CAF50;
+      border-color: #3498db;
     }
     
-    .no-results {
+    footer {
       text-align: center;
-      padding: 20px;
-      font-style: italic;
-      color: #666;
-    }
-    
-    .download-btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #4CAF50;
+      padding: 2rem;
+      background: #2c3e50;
       color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      margin-top: 10px;
-    }
-    
-    .download-btn:hover {
-      background-color: #45a049;
+      margin-top: 2rem;
     }
     
     @media (max-width: 768px) {
-      th, td {
-        padding: 8px 10px;
-        font-size: 14px;
+      .navbar-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .nav-list ul {
+        margin-top: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .nav-list li {
+        margin: 0;
+      }
+      
+      .commodity-grid {
+        grid-template-columns: 1fr;
       }
       
       .search-container {
@@ -130,44 +299,103 @@
 <body>
   <header class="navbar-container">
     <div class="logo">
-      <img src="https://via.placeholder.com/150x50/2c3e50/ffffff?text=Logo+Karantina" alt="Logo Karantina" />
+      <img src="https://via.placeholder.com/50x50/3498db/ffffff?text=K" alt="Logo Karantina" />
+      <div class="logo-text">PSAT Kepulauan Riau</div>
     </div>
     <nav class="nav-list">
       <ul>
         <li><a href="index.html">Beranda</a></li>
         <li><a href="data.html" class="active">Data OPTK</a></li>
         <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
+        <li><a href="#kontak">Kontak</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="data-container">
-      <h2>Data OPTK Semua Komoditas</h2>
-      <p class="description">Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk berbagai komoditas pertanian:</p>
+    <section class="header-section">
+      <h1>Data OPTK per Komoditas</h1>
+      <p>Portal data Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk komoditas pertanian</p>
+    </section>
+    
+    <section class="menu-section">
+      <h2>Pilih Komoditas</h2>
+      <p>Pilih komoditas untuk melihat daftar OPTK dalam format CSV:</p>
       
-      <div class="commodity-tabs">
-        <button class="tab-btn active" data-commodity="all">Semua Komoditas</button>
-        <button class="tab-btn" data-commodity="apel">🍎 Apel</button>
-        <button class="tab-btn" data-commodity="anggur">🍇 Anggur</button>
-        <button class="tab-btn" data-commodity="pir">🍐 Pir</button>
-        <button class="tab-btn" data-commodity="bawang_bombay">🧅 Bawang Bombay</button>
-        <button class="tab-btn" data-commodity="bawang_putih">🧄 Bawang Putih</button>
+      <div class="commodity-grid">
+        <div class="commodity-card">
+          <div class="card-header">🍎</div>
+          <div class="card-content">
+            <h3>Apel</h3>
+            <p>Data OPTK untuk komoditas Apel</p>
+            <a href="data/apel.csv" class="download-btn" download>
+              <i class="fas fa-download"></i> Unduh CSV
+            </a>
+          </div>
+        </div>
+        
+        <div class="commodity-card">
+          <div class="card-header">🍇</div>
+          <div class="card-content">
+            <h3>Anggur</h3>
+            <p>Data OPTK untuk komoditas Anggur</p>
+            <a href="data/anggur.csv" class="download-btn" download>
+              <i class="fas fa-download"></i> Unduh CSV
+            </a>
+          </div>
+        </div>
+        
+        <div class="commodity-card">
+          <div class="card-header">🍐</div>
+          <div class="card-content">
+            <h3>Pir</h3>
+            <p>Data OPTK untuk komoditas Pir</p>
+            <a href="data/pir.csv" class="download-btn" download>
+              <i class="fas fa-download"></i> Unduh CSV
+            </a>
+          </div>
+        </div>
+        
+        <div class="commodity-card">
+          <div class="card-header">🧅</div>
+          <div class="card-content">
+            <h3>Bawang Bombay</h3>
+            <p>Data OPTK untuk komoditas Bawang Bombay</p>
+            <a href="data/bawang_bombay.csv" class="download-btn" download>
+              <i class="fas fa-download"></i> Unduh CSV
+            </a>
+          </div>
+        </div>
+        
+        <div class="commodity-card">
+          <div class="card-header">🧄</div>
+          <div class="card-content">
+            <h3>Bawang Putih</h3>
+            <p>Data OPTK untuk komoditas Bawang Putih</p>
+            <a href="data/bawang_putih.csv" class="download-btn" download>
+              <i class="fas fa-download"></i> Unduh CSV
+            </a>
+          </div>
+        </div>
       </div>
       
+      <p style="margin-top: 1.5rem;">📊 Kamu juga bisa buka file CSV ini langsung di <b>Excel / Google Spreadsheet</b> untuk mempermudah pencarian.</p>
+    </section>
+    
+    <section class="data-section">
+      <h2>Pratinjau Data OPTK Apel</h2>
+      
       <div class="search-container">
-        <input type="text" id="searchInput" class="search-box" placeholder="Cari OPTK, inang, atau daerah sebar...">
-        <select id="categoryFilter" class="filter-select">
+        <input type="text" class="search-box" placeholder="Cari OPTK..." id="searchInput">
+        <select class="filter-select" id="categoryFilter">
           <option value="">Semua Jenis</option>
           <option value="SERANGGA">Serangga</option>
           <option value="TUNGAU">Tungau</option>
-          <option value="GULMA NON PARASITIK">Gulma Non Parasitik</option>
           <option value="CENDAWAN">Cendawan</option>
           <option value="BAKTERI">Bakteri</option>
           <option value="VIRUS">Virus</option>
-          <option value="VIROID">Viroid</option>
         </select>
-        <select id="statusFilter" class="filter-select">
+        <select class="filter-select" id="statusFilter">
           <option value="">Semua Status</option>
           <option value="A1">A1</option>
           <option value="A2">A2</option>
@@ -179,7 +407,6 @@
           <thead>
             <tr>
               <th>No</th>
-              <th>Komoditas</th>
               <th>Jenis OPTK</th>
               <th>Kategori</th>
               <th>Nama OPTK</th>
@@ -188,19 +415,107 @@
               <th>Daerah Sebar</th>
             </tr>
           </thead>
-          <tbody id="tableBody">
-            <!-- Data akan diisi oleh JavaScript -->
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>SERANGGA</td>
+              <td>A1</td>
+              <td>Alsophila pometaria (Harris); fall cankerworm</td>
+              <td>Acer spp. (maple), Fraxinus spp., Malus domestica (apel, apple)</td>
+              <td>batang, buah, bunga, daun</td>
+              <td>America: Canada, USA</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>SERANGGA</td>
+              <td>A1</td>
+              <td>Anastrepha fraterculus (Wiedemann); South American fruitfly</td>
+              <td>Actinidia chinensis, Annona cherimola, Malus domestica (apel, apple)</td>
+              <td>buah, media tanam, tanah</td>
+              <td>America: Argentina, Belize, Bolivia, Brazil</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>SERANGGA</td>
+              <td>A1</td>
+              <td>Anastrepha ludens (Loew); Mexican fruit fly</td>
+              <td>Anacardium occidentale, Annona cherimola, Malus domestica (apel, apple)</td>
+              <td>buah, media tanam, tanah</td>
+              <td>America: Belize, Costa Rica, El Salvador, Guatemala</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>SERANGGA</td>
+              <td>A1</td>
+              <td>Anastrepha serpentina (Wiedemann); sapote fruit fly</td>
+              <td>Alchornea latifolia, Annona cherimola, Malus domestica (apel, apple)</td>
+              <td>buah, media tanam, tanah</td>
+              <td>America: Belize, Brazil, Colombia, Costa Rica</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>SERANGGA</td>
+              <td>A1</td>
+              <td>Anastrepha suspensa (Loew); Carribean fruit fly</td>
+              <td>Annona spp., Annona squamosa, Malus domestica (apel, apple)</td>
+              <td>buah, media tanam, tanah</td>
+              <td>America: Bahamas, British Virgin Islands, Cayman Islands</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>TUNGAU</td>
+              <td>A1</td>
+              <td>Aculus schlechtendali (Nalepa, 1890); apple rust mite</td>
+              <td>Malus domestica (apel, apple), Pyrus communis (pir, pear)</td>
+              <td>daun, buah, okulasi</td>
+              <td>Africa: Egypt; America: Brazil, Canada, Chile, USA</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>CENDAWAN</td>
+              <td>A1</td>
+              <td>Botryosphaeria dothidea; canker of almond bark gummosis of peach</td>
+              <td>Actinidia deliciosa (kiwi fruit), Malus domestica (apel, apple)</td>
+              <td>batang, buah, daun</td>
+              <td>Africa: Algeria, Ethiopia; America: Argentina, Bolivia, Brazil</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>CENDAWAN</td>
+              <td>A1</td>
+              <td>Botryosphaeria ribis; cane blight, canker, dieback, fruit rot</td>
+              <td>Citrus sp. (jeruk, citrus), Malus domesticum (apel, apple)</td>
+              <td>batang, cabang, ranting, buah, bunga, kulit kayu, tunas</td>
+              <td>Africa: Ethiopia, Ghana; America: Argentina, Bolivia, Brazil</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>BAKTERI</td>
+              <td>A1</td>
+              <td>Erwinia amylovora; fire blight</td>
+              <td>Amelanchier spp., Chaenomeles spp., Malus domestica (apel, apple)</td>
+              <td>batang, bibit, buah, bunga, daun, kayu, tunas</td>
+              <td>Africa: Algeria, Egypt; America: Bermuda, Canada, Guatemala, Mexico, USA</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>VIRUS</td>
+              <td>A1</td>
+              <td>Apple mosaic virus (ApMV); apple infectious variegation virus</td>
+              <td>Aesculus spp., Betula spp. (birch), Malus domestica (apel, apple)</td>
+              <td>akar, batang, buah, polong, bunga, tunas, kultur jaringan</td>
+              <td>Africa: Algeria, Kenya; America: Argentina, Brazil, Canada, Chile</td>
+            </tr>
           </tbody>
         </table>
       </div>
       
-      <div class="pagination" id="pagination">
-        <!-- Pagination akan diisi oleh JavaScript -->
+      <div class="pagination">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>→</button>
       </div>
-      
-      <a href="#" id="downloadBtn" class="download-btn">
-        <i class="fas fa-download"></i> Unduh Data CSV
-      </a>
     </section>
   </main>
 
@@ -209,271 +524,56 @@
   </footer>
 
   <script>
-    // Data contoh untuk berbagai komoditas
-    const allCommodityData = [
-      // Data Apel (contoh)
-      {
-        no: 1,
-        commodity: "Apel",
-        jenis: "SERANGGA",
-        kategori: "A1",
-        nama: "Alsophila pometaria (Harris); (Syn. Anisopterix pometaria, Anisopteryx pometaria); (Lepidoptera: Geometridae); fall cankerworm",
-        inang: "Acer spp. (maple), Fraxinus spp., Hackberry, Juglan sp. (walnut), Malus domestica (apel, apple), Pelargonium (geranium), Pyrus communis (pir, pear), Quercus spp. (oak), Rose, Salix sp. (willow), Ulmus sp. (elm), other stone fruit",
-        media: "batang (stems, trunks, shoots, branches), buah (fruits), bunga (flowers, inflorescences, cones, calyx), daun (leaves)",
-        daerah: "America: Canada, USA"
-      },
-      {
-        no: 2,
-        commodity: "Apel",
-        jenis: "SERANGGA",
-        kategori: "A1",
-        nama: "Anastrepha fraterculus (Wiedemann); (Syn. Acrotoxa fraterculus (Weidemann), Anastrepha braziliensis Greene, Anastrepha costarukmanii Capoor); (Diptera: Tephritidae); South American fruitfly",
-        inang: "Actinidia chinensis (Chinese gooseberry), Actinidia deliciosa (kiwi, kiwifruit), Ampelocera hottlei, Annona cherimola (cherimoya), Annona muricata (sirsak, soursop), Annona squamosa (srikaya, sweetsop), Averrhoa carambola (belimbing, carambola, star-fruit)",
-        media: "buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)",
-        daerah: "America: Argentina, Belize, Bolivia, Brazil, Colombia, Costa Rica, Ecuador, El Salvador, French Guiana. Guatemala, Guyana, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, Suriname, Trinidad and Tobago, USA, Uruguay, Venezuela"
-      },
-      {
-        no: 3,
-        commodity: "Apel",
-        jenis: "SERANGGA",
-        kategori: "A1",
-        nama: "Anastrepha ludens (Loew); (Syn. Acrotoxa ludens (Loew), Anastrepha lathana Stone, Trypeta ludens Loew); (Diptera: Tephritidae); Mexican fruit fly",
-        inang: "Anacardium occidentale (jambu mete, cashew-nut), Annona cherimola (cherimoya), Annona liebmanniana, Annona muricata (sirsak, soursop), Annona reticulata (buah nona, srikaya), Annona squamosa (srikaya, sweetsop, bullock's heart, custard apple)",
-        media: "buah (fruit (inc. pods), media tanam (growing media associated with plants), tanah (soil)",
-        daerah: "America: Belize, Costa Rica, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, USA"
-      },
-      // Data Anggur (contoh)
-      {
-        no: 1,
-        commodity: "Anggur",
-        jenis: "SERANGGA",
-        kategori: "A1",
-        nama: "Contoh OPTK Anggur 1",
-        inang: "Vitis vinifera (anggur, grapevine), tanaman inang lainnya",
-        media: "buah, daun, batang",
-        daerah: "Eropa: Italia, Prancis, Spanyol"
-      },
-      {
-        no: 2,
-        commodity: "Anggur",
-        jenis: "CENDAWAN",
-        kategori: "A2",
-        nama: "Contoh OPTK Anggur 2",
-        inang: "Vitis vinifera (anggur, grapevine)",
-        media: "daun, buah",
-        daerah: "Amerika: AS, Chili; Eropa: Italia, Prancis"
-      },
-      // Data Pir (contoh)
-      {
-        no: 1,
-        commodity: "Pir",
-        jenis: "SERANGGA",
-        kategori: "A1",
-        nama: "Contoh OPTK Pir 1",
-        inang: "Pyrus communis (pir, pear), tanaman inang lainnya",
-        media: "buah, daun",
-        daerah: "Asia: China, Korea; Eropa: Italia, Belanda"
-      },
-      {
-        no: 2,
-        commodity: "Pir",
-        jenis: "BAKTERI",
-        kategori: "A1",
-        nama: "Contoh OPTK Pir 2",
-        inang: "Pyrus communis (pir, pear)",
-        media: "batang, daun",
-        daerah: "Amerika: AS, Kanada; Eropa: Inggris, Jerman"
-      },
-      // Data Bawang Bombay (contoh)
-      {
-        no: 1,
-        commodity: "Bawang Bombay",
-        jenis: "CENDAWAN",
-        kategori: "A2",
-        nama: "Contoh OPTK Bawang Bombay 1",
-        inang: "Allium cepa (bawang bombay, onion)",
-        media: "umbi, daun",
-        daerah: "Asia: India, Indonesia; Afrika: Mesir"
-      },
-      // Data Bawang Putih (contoh)
-      {
-        no: 1,
-        commodity: "Bawang Putih",
-        jenis: "VIRUS",
-        kategori: "A1",
-        nama: "Contoh OPTK Bawang Putih 1",
-        inang: "Allium sativum (bawang putih, garlic)",
-        media: "umbi",
-        daerah: "Asia: China, Korea; Eropa: Spanyol"
-      },
-      {
-        no: 2,
-        commodity: "Bawang Putih",
-        jenis: "SERANGGA",
-        kategori: "A2",
-        nama: "Contoh OPTK Bawang Putih 2",
-        inang: "Allium sativum (bawang putih, garlic), tanaman inang lainnya",
-        media: "daun, umbi",
-        daerah: "Amerika: AS, Meksiko; Asia: Indonesia, Thailand"
-      }
-    ];
-
-    let currentPage = 1;
-    const rowsPerPage = 10;
-    let filteredData = [...allCommodityData];
-    let currentCommodity = "all";
-
-    // Populate table with data
-    function populateTable(data, page = 1) {
-      const tableBody = document.getElementById('tableBody');
-      tableBody.innerHTML = '';
+    // Simple search functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const searchValue = this.value.toLowerCase();
+      const rows = document.querySelectorAll('#optkTable tbody tr');
       
-      const start = (page - 1) * rowsPerPage;
-      const end = start + rowsPerPage;
-      const paginatedData = data.slice(start, end);
-      
-      if (paginatedData.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="8" class="no-results">Tidak ada data yang ditemukan</td>`;
-        tableBody.appendChild(row);
-        return;
-      }
-      
-      paginatedData.forEach(rowData => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${rowData.no || ''}</td>
-          <td>${rowData.commodity || ''}</td>
-          <td>${rowData.jenis || ''}</td>
-          <td>${rowData.kategori || ''}</td>
-          <td>${rowData.nama || ''}</td>
-          <td>${rowData.inang || ''}</td>
-          <td>${rowData.media || ''}</td>
-          <td>${rowData.daerah || ''}</td>
-        `;
-        tableBody.appendChild(row);
-      });
-      
-      setupPagination(data, page);
-    }
-
-    // Setup pagination
-    function setupPagination(data, page) {
-      const paginationElement = document.getElementById('pagination');
-      paginationElement.innerHTML = '';
-      
-      const pageCount = Math.ceil(data.length / rowsPerPage);
-      
-      if (pageCount <= 1) return;
-      
-      // Previous button
-      if (page > 1) {
-        const prevButton = document.createElement('button');
-        prevButton.innerText = '←';
-        prevButton.addEventListener('click', () => {
-          currentPage = page - 1;
-          populateTable(filteredData, currentPage);
-        });
-        paginationElement.appendChild(prevButton);
-      }
-      
-      // Page buttons
-      const maxVisiblePages = 5;
-      let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
-      let endPage = Math.min(pageCount, startPage + maxVisiblePages - 1);
-      
-      if (endPage - startPage + 1 < maxVisiblePages) {
-        startPage = Math.max(1, endPage - maxVisiblePages + 1);
-      }
-      
-      for (let i = startPage; i <= endPage; i++) {
-        const button = document.createElement('button');
-        button.innerText = i;
-        
-        if (i === page) {
-          button.classList.add('active');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(searchValue)) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
         }
-        
-        button.addEventListener('click', () => {
-          currentPage = i;
-          populateTable(filteredData, currentPage);
-        });
-        
-        paginationElement.appendChild(button);
-      }
-      
-      // Next button
-      if (page < pageCount) {
-        const nextButton = document.createElement('button');
-        nextButton.innerText = '→';
-        nextButton.addEventListener('click', () => {
-          currentPage = page + 1;
-          populateTable(filteredData, currentPage);
-        });
-        paginationElement.appendChild(nextButton);
-      }
-    }
-
-    // Filter data based on search and filters
-    function filterData() {
-      const searchValue = document.getElementById('searchInput').value.toLowerCase();
+      });
+    });
+    
+    // Filter functionality
+    document.getElementById('categoryFilter').addEventListener('change', filterTable);
+    document.getElementById('statusFilter').addEventListener('change', filterTable);
+    
+    function filterTable() {
       const categoryValue = document.getElementById('categoryFilter').value;
       const statusValue = document.getElementById('statusFilter').value;
+      const searchValue = document.getElementById('searchInput').value.toLowerCase();
+      const rows = document.querySelectorAll('#optkTable tbody tr');
       
-      filteredData = allCommodityData.filter(item => {
-        // Filter by commodity tab
-        if (currentCommodity !== 'all' && item.commodity.toLowerCase() !== currentCommodity) {
-          return false;
+      rows.forEach(row => {
+        const category = row.cells[1].textContent;
+        const status = row.cells[2].textContent;
+        const text = row.textContent.toLowerCase();
+        
+        const categoryMatch = categoryValue === '' || category === categoryValue;
+        const statusMatch = statusValue === '' || status === statusValue;
+        const searchMatch = text.includes(searchValue);
+        
+        if (categoryMatch && statusMatch && searchMatch) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
         }
-        
-        // Filter by search value
-        const matchesSearch = 
-          (item.nama && item.nama.toLowerCase().includes(searchValue)) ||
-          (item.inang && item.inang.toLowerCase().includes(searchValue)) ||
-          (item.daerah && item.daerah.toLowerCase().includes(searchValue)) ||
-          (item.commodity && item.commodity.toLowerCase().includes(searchValue));
-        
-        // Filter by category
-        const matchesCategory = categoryValue === '' || item.jenis === categoryValue;
-        
-        // Filter by status
-        const matchesStatus = statusValue === '' || item.kategori === statusValue;
-        
-        return matchesSearch && matchesCategory && matchesStatus;
       });
-      
-      currentPage = 1;
-      populateTable(filteredData, currentPage);
     }
-
-    // Set up event listeners
-    function setupEventListeners() {
-      document.getElementById('searchInput').addEventListener('input', filterData);
-      document.getElementById('categoryFilter').addEventListener('change', filterData);
-      document.getElementById('statusFilter').addEventListener('change', filterData);
-      
-      // Tab buttons
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          currentCommodity = button.getAttribute('data-commodity');
-          filterData();
+    
+    // Pagination functionality
+    document.querySelectorAll('.pagination button').forEach(button => {
+      button.addEventListener('click', function() {
+        document.querySelectorAll('.pagination button').forEach(btn => {
+          btn.classList.remove('active');
         });
+        this.classList.add('active');
       });
-      
-      // Download button
-      document.getElementById('downloadBtn').addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('Fungsi download akan diimplementasikan sesuai dengan komoditas yang dipilih');
-      });
-    }
-
-    // Initialize the page
-    document.addEventListener('DOMContentLoaded', () => {
-      populateTable(allCommodityData, currentPage);
-      setupEventListeners();
     });
   </script>
 </body>
