@@ -47,8 +47,8 @@ header, main, footer {
 /* ===== Main Content ===== */
 main {
   padding: 3rem 1rem;
-  max-width: 1200px;  /* batasi lebar desktop */
-  margin: 0 auto;     /* center page */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content {
@@ -90,15 +90,25 @@ button:hover {
   transform: translateY(-3px);
 }
 
-/* ===== Preview Buku Saku ===== */
-.pdf-preview {
-  width: 100%;
-  max-width: 900px; /* batasi lebar desktop */
-  height: 600px;
+/* ===== Kotak Saran ===== */
+.menu-section {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+textarea {
+  width: 80%;
+  max-width: 500px;
+  padding: 0.8rem;
+  border-radius: 5px;
   border: 1px solid #ccc;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto; /* center iframe */
+  resize: vertical;
+  font-family: 'Quicksand', sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #004d40;
 }
 
 /* ===== Footer ===== */
@@ -118,11 +128,6 @@ footer {
 
   .content-description .title {
     font-size: 1.8rem;
-  }
-
-  .pdf-preview {
-    max-width: 100%; /* desktop kecil/tablet tetap responsive */
-    height: 500px;
   }
 }
 
@@ -155,8 +160,8 @@ footer {
     max-width: 250px;
   }
 
-  .pdf-preview {
-    height: 400px; /* nyaman di layar kecil */
+  textarea {
+    width: 90%;
   }
 }
 
