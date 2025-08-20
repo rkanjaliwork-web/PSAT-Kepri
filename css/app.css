@@ -18,7 +18,7 @@ header, main, footer {
   background: #004d40;
   padding: 1rem 1.5rem;
   color: white;
-  flex-wrap: wrap; /* wrap di mobile */
+  flex-wrap: wrap;
 }
 
 .navbar-container .logo img {
@@ -54,7 +54,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 2rem 0;
-  flex-wrap: wrap; /* penting agar stack di mobile */
+  flex-wrap: wrap;
   gap: 2rem;
 }
 
@@ -81,12 +81,12 @@ button {
   border-radius: 5px;
   cursor: pointer;
   margin-top: 1rem;
-  transition: all 0.3s ease; /* animasi tombol */
+  transition: all 0.3s ease;
 }
 
 button:hover {
   background: #00796b;
-  transform: translateY(-3px); /* tombol naik sedikit saat hover */
+  transform: translateY(-3px);
 }
 
 .content-image {
@@ -98,7 +98,7 @@ button:hover {
   max-width: 200px;
   height: auto;
   border-radius: 8px;
-  transition: transform 0.3s ease; /* animasi zoom */
+  transition: transform 0.3s ease;
 }
 
 .content-image img:hover {
@@ -122,7 +122,7 @@ button:hover {
   border-radius: 8px;
   opacity: 0;
   transform: translateY(20px);
-  transition: all 0.6s ease-out; /* animasi fade-in iframe */
+  transition: all 0.6s ease-out;
 }
 
 /* ===== Footer ===== */
@@ -180,7 +180,7 @@ footer {
   }
 
   .menu-section iframe {
-    height: 400px; /* nyaman di HP */
+    height: 400px;
   }
 }
 
