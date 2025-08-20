@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data OPTK</title>
   <link rel="stylesheet" href="css/app.css">
-  <script src="js/data.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 </head>
 <body>
-  <header class="navbar-container">
-    <nav class="nav-list">
+  <header class="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo Karantina" />
+      <h1>OPTK Kepri</h1>
+    </div>
+    <nav>
       <ul>
         <li><a href="index.html">Beranda</a></li>
-        <li><a href="buku_saku.html">Buku Saku</a></li>
-        <li><a href="data.html">Data OPTK</a></li>
+        <li><a href="buku-saku.html">Buku Saku</a></li>
+        <li><a href="data.html" class="active">Data OPTK</a></li>
       </ul>
     </nav>
   </header>
+
   <main class="content">
-    <h1>Data OPTK</h1>
-    <input type="text" id="search" placeholder="Cari OPTK..." />
-    <table id="optkTable" border="1">
-      <thead>
-        <tr><th>Nama OPTK</th><th>Komoditas</th></tr>
-      </thead>
+    <h2>Data OPTK</h2>
+    <p>Pilih dataset untuk ditampilkan:</p>
+    <select id="dataset">
+      <option value="apel.csv">Apel</option>
+      <option value="pir.csv">Pir</option>
+      <option value="anggur.csv">Anggur</option>
+      <option value="bawang_bombay.csv">Bawang Bombay</option>
+      <option value="bawang_putih.csv">Bawang Putih</option>
+    </select>
+
+    <input type="text" id="search" placeholder="Cari data..." />
+
+    <table id="data-table">
+      <thead></thead>
       <tbody></tbody>
     </table>
   </main>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
