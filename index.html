@@ -1,166 +1,213 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OPTK - PSAT Kepulauan Riau</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPTK di Komoditas PSAT - Kepulauan Riau</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/app.css" />
-
-  <!-- DataTables CSS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    crossorigin="anonymous"
-  />
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background: #006d77;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .search-box {
+      margin-bottom: 1rem;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    table th {
+      background: #006d77;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f2f2f2;
+    }
+    footer {
+      background: #006d77;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-  <header class="navbar-container">
-    <div class="logo">
-      <img src="img/logo.png" alt="Logo Karantina" />
-    </div>
-    <nav class="nav-list">
+  <header>
+    <h1>OPTK di Komoditas Pangan Segar Asal Tumbuhan - Kepri</h1>
+    <nav>
       <ul>
-        <li><a href="#">Beranda</a></li>
-        <li><a href="#data">Data OPTK</a></li>
-        <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
-        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#" onclick="showTable('apel')">Apel</a></li>
+        <li><a href="#" onclick="showTable('anggur')">Anggur</a></li>
+        <li><a href="#" onclick="showTable('pir')">Pir</a></li>
+        <li><a href="#" onclick="showTable('bawang_bombay')">Bawang Bombay</a></li>
+        <li><a href="#" onclick="showTable('bawang_putih')">Bawang Putih</a></li>
       </ul>
     </nav>
   </header>
 
-  <main>
-    <div class="content">
-      <div class="content-description">
-        <h1 class="title">OPTK di Komoditas PSAT <br> Wilayah Kepulauan Riau</h1>
-        <p>
-          Website ini memuat informasi mengenai Organisme Pengganggu Tumbuhan Karantina (OPTK) 
-          pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Kepulauan Riau. 
-          Data meliputi <b>apel, anggur, pir, bawang bombay, dan bawang putih</b>.
-        </p>
-        <button onclick="document.getElementById('data').scrollIntoView()">Lihat Data</button>
-      </div>
-      <div class="content-image">
-        <img src="img/logo.png" alt="Karantina Pertanian" />
-      </div>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Cari OPTK..." onkeyup="searchTable()">
     </div>
 
-    <!-- DATA SECTION -->
-    <section id="data" class="menu-section">
-      <h2>Data OPTK - Apel</h2>
-      <table id="tabelApel" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>Nama OPTK</th>
-            <th>Nama Ilmiah</th>
-            <th>Negara Asal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Kutu Apel</td><td>Aphis pomi</td><td>China</td></tr>
-          <tr><td>Lalat Buah</td><td>Bactrocera dorsalis</td><td>Thailand</td></tr>
-          <tr><td>Kutu Daun</td><td>Dysaphis plantaginea</td><td>India</td></tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- Tabel Apel -->
+    <table id="apel" class="data-table">
+      <thead>
+        <tr>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Kategori</th>
+          <th>Negara Asal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- isi <tr> apel_rows.html di sini -->
+      </tbody>
+    </table>
 
-    <section class="menu-section">
-      <h2>Data OPTK - Anggur</h2>
-      <table id="tabelAnggur" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>Nama OPTK</th>
-            <th>Nama Ilmiah</th>
-            <th>Negara Asal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Lalat Buah Mediterania</td><td>Ceratitis capitata</td><td>Mesir</td></tr>
-          <tr><td>Kumbang Daun Anggur</td><td>Xylotrechus arvicola</td><td>Spanyol</td></tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- Tabel Anggur -->
+    <table id="anggur" class="data-table hidden">
+      <thead>
+        <tr>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Kategori</th>
+          <th>Negara Asal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- isi <tr> anggur_rows.html di sini -->
+      </tbody>
+    </table>
 
-    <section class="menu-section">
-      <h2>Data OPTK - Pir</h2>
-      <table id="tabelPir" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>Nama OPTK</th>
-            <th>Nama Ilmiah</th>
-            <th>Negara Asal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Kutu Pir Hijau</td><td>Psylla pyricola</td><td>Amerika Serikat</td></tr>
-          <tr><td>Bercak Daun Pir</td><td>Venturia pirina</td><td>Prancis</td></tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- Tabel Pir -->
+    <table id="pir" class="data-table hidden">
+      <thead>
+        <tr>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Kategori</th>
+          <th>Negara Asal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- isi <tr> pir_rows.html di sini -->
+      </tbody>
+    </table>
 
-    <section class="menu-section">
-      <h2>Data OPTK - Bawang Bombay</h2>
-      <table id="tabelBombay" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>Nama OPTK</th>
-            <th>Nama Ilmiah</th>
-            <th>Negara Asal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Lalat Akar Bawang</td><td>Delia antiqua</td><td>Belanda</td></tr>
-          <tr><td>Penyakit Busuk Leher</td><td>Botrytis allii</td><td>Kanada</td></tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- Tabel Bawang Bombay -->
+    <table id="bawang_bombay" class="data-table hidden">
+      <thead>
+        <tr>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Kategori</th>
+          <th>Negara Asal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- isi <tr> bawang_bombay_rows.html di sini -->
+      </tbody>
+    </table>
 
-    <section class="menu-section">
-      <h2>Data OPTK - Bawang Putih</h2>
-      <table id="tabelPutih" class="display" style="width:100%">
-        <thead>
-          <tr>
-            <th>Nama OPTK</th>
-            <th>Nama Ilmiah</th>
-            <th>Negara Asal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Nematoda Bawang</td><td>Ditylenchus dipsaci</td><td>Turki</td></tr>
-          <tr><td>Embun Bawang Putih</td><td>Peronospora destructor</td><td>India</td></tr>
-        </tbody>
-      </table>
-    </section>
+    <!-- Tabel Bawang Putih -->
+    <table id="bawang_putih" class="data-table hidden">
+      <thead>
+        <tr>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Kategori</th>
+          <th>Negara Asal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- isi <tr> bawang_putih_rows.html di sini -->
+      </tbody>
+    </table>
+  </div>
 
-  </main>
-
-  <footer id="kontak">
-    <p>© 2025 Karantina Pertanian Kepulauan Riau</p>
+  <footer>
+    <p>&copy; 2025 BKHIT Kepulauan Riau</p>
   </footer>
 
-  <!-- JQuery & DataTables JS -->
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <!-- Script -->
   <script>
-    $(document).ready(function(){
-      $('#tabelApel').DataTable();
-      $('#tabelAnggur').DataTable();
-      $('#tabelPir').DataTable();
-      $('#tabelBombay').DataTable();
-      $('#tabelPutih').DataTable();
-    });
+    function showTable(id) {
+      document.querySelectorAll(".data-table").forEach(table => table.classList.add("hidden"));
+      document.getElementById(id).classList.remove("hidden");
+      document.getElementById("searchInput").value = ""; // reset pencarian
+    }
+
+    function searchTable() {
+      let input = document.getElementById("searchInput").value.toLowerCase();
+      let table = document.querySelector("table:not(.hidden)");
+      let trs = table.querySelectorAll("tbody tr");
+
+      trs.forEach(tr => {
+        let text = tr.innerText.toLowerCase();
+        tr.style.display = text.includes(input) ? "" : "none";
+      });
+    }
   </script>
 </body>
 </html>
