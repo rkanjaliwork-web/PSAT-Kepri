@@ -3,211 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OPTK di Komoditas PSAT - Kepulauan Riau</title>
-
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-  <!-- CSS -->
-  <style>
-    body {
-      font-family: 'Quicksand', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
-    }
-    header {
-      background: #006d77;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1rem;
-      margin: 0;
-      padding: 0;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .container {
-      padding: 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .search-box {
-      margin-bottom: 1rem;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 0.75rem;
-      text-align: left;
-    }
-    table th {
-      background: #006d77;
-      color: white;
-    }
-    tr:nth-child(even) {
-      background: #f2f2f2;
-    }
-    footer {
-      background: #006d77;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-    .hidden {
-      display: none;
-    }
-  </style>
+  <title>Buku Saku OPTK</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>OPTK di Komoditas Pangan Segar Asal Tumbuhan - Kepri</h1>
+  <header class="navbar">
+    <h1>📖 Buku Saku OPTK</h1>
     <nav>
-      <ul>
-        <li><a href="#" onclick="showTable('apel')">Apel</a></li>
-        <li><a href="#" onclick="showTable('anggur')">Anggur</a></li>
-        <li><a href="#" onclick="showTable('pir')">Pir</a></li>
-        <li><a href="#" onclick="showTable('bawang_bombay')">Bawang Bombay</a></li>
-        <li><a href="#" onclick="showTable('bawang_putih')">Bawang Putih</a></li>
-      </ul>
+      <a href="index.html">Beranda</a>
+      <a href="data.html">Data OPTK</a>
     </nav>
   </header>
 
-  <div class="container">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Cari OPTK..." onkeyup="searchTable()">
-    </div>
-
-    <!-- Tabel Apel -->
-    <table id="apel" class="data-table">
-      <thead>
-        <tr>
-          <th>Nama OPTK</th>
-          <th>Nama Ilmiah</th>
-          <th>Kategori</th>
-          <th>Negara Asal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- isi <tr> apel_rows.html di sini -->
-      </tbody>
-    </table>
-
-    <!-- Tabel Anggur -->
-    <table id="anggur" class="data-table hidden">
-      <thead>
-        <tr>
-          <th>Nama OPTK</th>
-          <th>Nama Ilmiah</th>
-          <th>Kategori</th>
-          <th>Negara Asal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- isi <tr> anggur_rows.html di sini -->
-      </tbody>
-    </table>
-
-    <!-- Tabel Pir -->
-    <table id="pir" class="data-table hidden">
-      <thead>
-        <tr>
-          <th>Nama OPTK</th>
-          <th>Nama Ilmiah</th>
-          <th>Kategori</th>
-          <th>Negara Asal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- isi <tr> pir_rows.html di sini -->
-      </tbody>
-    </table>
-
-    <!-- Tabel Bawang Bombay -->
-    <table id="bawang_bombay" class="data-table hidden">
-      <thead>
-        <tr>
-          <th>Nama OPTK</th>
-          <th>Nama Ilmiah</th>
-          <th>Kategori</th>
-          <th>Negara Asal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- isi <tr> bawang_bombay_rows.html di sini -->
-      </tbody>
-    </table>
-
-    <!-- Tabel Bawang Putih -->
-    <table id="bawang_putih" class="data-table hidden">
-      <thead>
-        <tr>
-          <th>Nama OPTK</th>
-          <th>Nama Ilmiah</th>
-          <th>Kategori</th>
-          <th>Negara Asal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- isi <tr> bawang_putih_rows.html di sini -->
-      </tbody>
-    </table>
-  </div>
-
-  <footer>
-    <p>&copy; 2025 BKHIT Kepulauan Riau</p>
-  </footer>
-
-  <!-- Script -->
-  <script>
-    function showTable(id) {
-      document.querySelectorAll(".data-table").forEach(table => table.classList.add("hidden"));
-      document.getElementById(id).classList.remove("hidden");
-      document.getElementById("searchInput").value = ""; // reset pencarian
-    }
-
-    function searchTable() {
-      let input = document.getElementById("searchInput").value.toLowerCase();
-      let table = document.querySelector("table:not(.hidden)");
-      let trs = table.querySelectorAll("tbody tr");
-
-      trs.forEach(tr => {
-        let text = tr.innerText.toLowerCase();
-        tr.style.display = text.includes(input) ? "" : "none";
-      });
-    }
-  </script>
+  <main class="content">
+    <h2>OPTK di Komoditas Pangan Segar Asal Tumbuhan<br>Wilayah Kepulauan Riau</h2>
+    <p>
+      Buku saku ini menyajikan daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) 
+      yang ditemukan pada komoditas pangan segar asal tumbuhan seperti 
+      <b>apel, anggur, pir, bawang bombay, dan bawang putih</b> 
+      di wilayah Kepulauan Riau.
+    </p>
+    <p>
+      Informasi ini dibuat untuk mempermudah petugas karantina maupun masyarakat 
+      dalam memahami potensi OPTK pada setiap komoditas.
+    </p>
+    <a class="btn" href="data.html">📊 Lihat Data OPTK</a>
+  </main>
 </body>
 </html>
