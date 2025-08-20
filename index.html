@@ -1,23 +1,89 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <title>Aplikasi Karantina Sederhana</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    nav { background: #004d40; padding: 10px; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    h1 { color: #004d40; }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="index.html">Beranda</a>
-    <a href="optk.html">Target OPTK</a>
-    <a href="buku-saku.html">Buku Saku</a>
-  </nav>
-
-  <h1>Selamat Datang</h1>
-  <p>Ini adalah aplikasi sederhana untuk akses cepat data <b>Target OPTK</b> dan <b>Buku Saku PSAT & OPTK</b>.</p>
-</body>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OPTK di Komoditas PSAT Kepri</title>
+ 
+    <!-- My Own CSS -->
+    <link rel="stylesheet" href="css/app.css" />
+ 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+ 
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header class="navbar-container">
+      <div class="logo">
+        <img src="img/logo.png" alt="Logo Karantina" />
+      </div>
+      <nav class="nav-list">
+        <ul>
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
+          <li><a href="#data-optk">Data OPTK</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+        </ul>
+      </nav>
+    </header>
+ 
+    <main>
+      <div class="content">
+        <div class="content-description">
+          <h1 class="title">OPTK di Komoditas Pangan Segar Asal Tumbuhan <br/> Wilayah Kepulauan Riau</h1>
+          <p>
+            Website ini menyajikan informasi daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) 
+            pada beberapa komoditas pangan segar asal tumbuhan (PSAT), yaitu apel, anggur, pir, 
+            bawang bombay, dan bawang putih. Data ini diharapkan dapat menjadi acuan bagi petugas 
+            karantina dan masyarakat untuk memahami potensi ancaman OPTK di wilayah Kepulauan Riau.
+          </p>
+ 
+          <button onclick="location.href='#data-optk'">Lihat Data OPTK</button>
+        </div>
+ 
+        <div class="content-image">
+          <img src="img/logo.png" alt="Logo Karantina" />
+        </div>
+      </div>
+ 
+      <section id="data-optk" class="data-section">
+        <h2>Data OPTK per Komoditas</h2>
+        <ul>
+          <li><a href="data/apel.csv" target="_blank">📂 Data OPTK Apel</a></li>
+          <li><a href="data/anggur.csv" target="_blank">📂 Data OPTK Anggur</a></li>
+          <li><a href="data/pir.csv" target="_blank">📂 Data OPTK Pir</a></li>
+          <li><a href="data/bawang_bombay.csv" target="_blank">📂 Data OPTK Bawang Bombay</a></li>
+          <li><a href="data/bawang_putih.csv" target="_blank">📂 Data OPTK Bawang Putih</a></li>
+        </ul>
+      </section>
+ 
+      <aside>
+        <div class="social-media">
+          <ul>
+            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+ 
+    <footer id="kontak">
+      <p>&copy; 2025 Karantina Pertanian Kepulauan Riau</p>
+      <p>Email: info@karantina-kepri.go.id</p>
+    </footer>
+  </body>
 </html>
