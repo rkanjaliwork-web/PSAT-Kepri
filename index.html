@@ -45,22 +45,22 @@
       </div>
     </div>
 
-    <!-- Preview Buku Saku (collapsible di mobile) -->
-    <section class="menu-section fade-in">
-      <h2>Preview Buku Saku</h2>
-      <button class="toggle-preview" id="togglePreview">Tampilkan Preview Buku Saku</button>
-      <div class="iframe-wrapper">
-        <div class="iframe-container" id="iframeContainer">
-          <object data="buku-saku/buku-saku.pdf" type="application/pdf" width="100%" height="600px">
-            <div class="pdf-alternative">
-              <p>Browser Anda tidak mendukung preview PDF. 
-                <a href="buku-saku/buku-saku.pdf" target="_blank">Klik di sini untuk mengunduh buku saku</a>.
-              </p>
-            </div>
-          </object>
+<!-- Preview Buku Saku (collapsible di mobile) -->
+<section class="menu-section fade-in">
+  <h2>Preview Buku Saku</h2>
+  <button class="toggle-preview" id="togglePreview">Tampilkan Preview Buku Saku</button>
+  <div class="iframe-wrapper">
+    <div class="iframe-container" id="iframeContainer">
+      <object data="buku-saku/buku-saku.pdf" type="application/pdf" width="100%" height="600px">
+        <div class="pdf-alternative">
+          <p>Browser Anda tidak mendukung preview PDF. 
+            <a href="buku-saku/buku-saku.pdf" target="_blank">Klik di sini untuk mengunduh buku saku</a>.
+          </p>
         </div>
-      </div>
-    </section>
+      </object>
+    </div>
+  </div>
+</section>
 
     <!-- Kotak Saran (Google Form) -->
     <section class="menu-section fade-in">
@@ -93,17 +93,17 @@
       
       faders.forEach(fader => appearOnScroll.observe(fader));
 
-      // Toggle preview buku saku
-      const toggleBtn = document.getElementById('togglePreview');
-      const iframeContainer = document.getElementById('iframeContainer');
+// Toggle preview buku saku
+const toggleBtn = document.getElementById('togglePreview');
+const iframeContainer = document.getElementById('iframeContainer');
 
-      if (toggleBtn && iframeContainer) {
-        toggleBtn.addEventListener('click', () => {
-          iframeContainer.classList.toggle('active');
-          toggleBtn.textContent = iframeContainer.classList.contains('active') ? 
-            'Sembunyikan Preview Buku Saku' : 'Tampilkan Preview Buku Saku';
-        });
-      }
+if (toggleBtn && iframeContainer) {
+  toggleBtn.addEventListener('click', () => {
+    iframeContainer.classList.toggle('active');
+    toggleBtn.textContent = iframeContainer.classList.contains('active') ? 
+      'Sembunyikan Preview Buku Saku' : 'Tampilkan Preview Buku Saku';
+  });
+}
 
       // Hamburger menu functionality
       const hamburger = document.getElementById('hamburger');
