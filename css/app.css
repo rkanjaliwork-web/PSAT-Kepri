@@ -1,0 +1,118 @@
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #00695c;
+  color: white;
+}
+
+.nav-list ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-list ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+}
+
+.content-description {
+  max-width: 600px;
+}
+
+.content-description h1 {
+  font-size: 28px;
+  color: #00695c;
+}
+
+.content-description p {
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+.content-description button {
+  padding: 10px 20px;
+  background-color: #00695c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.content-description button:hover {
+  background-color: #004d40;
+}
+
+.content-image img {
+  width: 250px;
+}
+
+.menu-section {
+  padding: 40px;
+  text-align: center;
+}
+
+.menu-section h2 {
+  margin-bottom: 20px;
+  color: #00695c;
+}
+
+.menu-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-section li {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.menu-section a {
+  text-decoration: none;
+  color: #333;
+}
+
+.menu-section a:hover {
+  color: #00695c;
+}
+
+.social-media ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.social-media a {
+  color: #00695c;
+  font-size: 20px;
+}
+
+footer {
+  background-color: #00695c;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
