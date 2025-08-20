@@ -1,0 +1,12 @@
+[
+  {
+    "commodity": "Apel",
+    "jenis": "SERANGGA",
+    "kategori": "A1",
+    "nama": "Nama OPTK",
+    "inang": "Daftar inang",
+    "media": "Media pembawa",
+    "daerah": "Daerah sebar"
+  },
+  // ... data lainnya
+]
