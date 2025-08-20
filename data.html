@@ -12,260 +12,262 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" />
-  
- <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
 
-  body {
-    font-family: 'Quicksand', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
-  }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    background-color: #2e7d32; /* hijau navbar */
-    color: white;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+    }
 
-  .logo img {
-    height: 50px;
-  }
-
-  .nav-list ul {
-    display: flex;
-    list-style: none;
-  }
-
-  .nav-list li {
-    margin-left: 2rem;
-  }
-
-  .nav-list a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-
-  .nav-list a:hover, .nav-list a.active {
-    color: #66bb6a; /* hijau muda */
-  }
-
-  main {
-    padding: 2rem 5%;
-  }
-
-  .data-container {
-    background: white;
-    border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-
-  h2 {
-    color: #2e7d32; /* hijau judul */
-    margin-bottom: 1rem;
-  }
-
-  .description {
-    margin-bottom: 1.5rem;
-    color: #555;
-  }
-
-  .commodity-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .tab-btn {
-    padding: 0.5rem 1rem;
-    background: #e9ecef;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 500;
-    transition: all 0.3s;
-  }
-
-  .tab-btn.active, .tab-btn:hover {
-    background: #388e3c; /* hijau tab aktif */
-    color: white;
-  }
-
-  .search-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .search-box {
-    flex: 1;
-    min-width: 250px;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: 'Quicksand', sans-serif;
-  }
-
-  .filter-select {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-    font-family: 'Quicksand', sans-serif;
-  }
-
-  .table-container {
-    overflow-x: auto;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    max-height: 500px;
-    overflow-y: auto;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 800px;
-  }
-
-  th, td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-
-  th {
-    background-color: #f2f2f2;
-    position: sticky;
-    top: 0;
-    font-weight: bold;
-    color: #2e7d32; /* hijau header */
-  }
-
-  tr:hover {
-    background-color: #f8f9fa;
-  }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .pagination button {
-    padding: 0.5rem 0.75rem;
-    border: 1px solid #ddd;
-    background-color: white;
-    cursor: pointer;
-    border-radius: 4px;
-    font-family: 'Quicksand', sans-serif;
-  }
-
-  .pagination button.active {
-    background-color: #388e3c;
-    color: white;
-    border-color: #388e3c;
-  }
-
-  .no-results {
-    text-align: center;
-    padding: 2rem;
-    font-style: italic;
-    color: #6c757d;
-  }
-
-  .download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #43a047; /* hijau download */
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: 500;
-    transition: background-color 0.3s;
-  }
-
-  .download-btn:hover {
-    background-color: #388e3c;
-  }
-
-  footer {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #2e7d32;
-    color: white;
-    margin-top: 2rem;
-  }
-
-  .loading {
-    display: none;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .loading-spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #388e3c;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    margin: 0 auto;
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  @media (max-width: 768px) {
     .navbar-container {
-      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+      background-color: #2c3e50;
+      color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 50px;
+    }
+
+    .nav-list ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-list li {
+      margin-left: 2rem;
+    }
+
+    .nav-list a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-list a:hover,
+    .nav-list a.active {
+      color: #4CAF50;
+    }
+
+    main {
+      padding: 2rem 5%;
+    }
+
+    .data-container {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    .description {
+      margin-bottom: 1.5rem;
+      color: #555;
+    }
+
+    .commodity-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      padding: 0.5rem 1rem;
+      background: #e9ecef;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .tab-btn.active,
+    .tab-btn:hover {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .search-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .filter-select {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: white;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      max-height: 500px;
+      overflow-y: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+      position: sticky;
+      top: 0;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    tr:hover {
+      background-color: #f8f9fa;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pagination button {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ddd;
+      background-color: white;
+      cursor: pointer;
+      border-radius: 4px;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .pagination button.active {
+      background-color: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      font-style: italic;
+      color: #6c757d;
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+
+    .download-btn:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #2c3e50;
+      color: white;
+      margin-top: 2rem;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
       padding: 1rem;
     }
-    
-    .nav-list {
-      margin-top: 1rem;
+
+    .loading-spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #4CAF50;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
     }
-    
-    .nav-list ul {
-      flex-direction: column;
-      align-items: center;
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
-    
-    .nav-list li {
-      margin: 0.5rem 0;
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav-list {
+        margin-top: 1rem;
+      }
+
+      .nav-list ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-list li {
+        margin: 0.5rem 0;
+      }
+
+      .search-container {
+        flex-direction: column;
+      }
+
+      th, td {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+      }
     }
-    
-    .search-container {
-      flex-direction: column;
-    }
-    
-    th, td {
-      padding: 0.5rem;
-      font-size: 0.9rem;
-    }
-  }
-</style>
+  </style>
 </head>
 <body>
   <header class="navbar-container">
@@ -284,8 +286,10 @@
   <main>
     <section class="data-container">
       <h2>Data OPTK Semua Komoditas</h2>
-      <p class="description">Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk berbagai komoditas pertanian:</p>
-      
+      <p class="description">
+        Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk berbagai komoditas pertanian:
+      </p>
+
       <div class="commodity-tabs">
         <button class="tab-btn active" data-commodity="all">Semua Komoditas</button>
         <button class="tab-btn" data-commodity="apel">🍎 Apel</button>
@@ -294,7 +298,7 @@
         <button class="tab-btn" data-commodity="bawang_bombay">🧅 Bawang Bombay</button>
         <button class="tab-btn" data-commodity="bawang_putih">🧄 Bawang Putih</button>
       </div>
-      
+
       <div class="search-container">
         <input type="text" id="searchInput" class="search-box" placeholder="Cari OPTK, inang, atau daerah sebar...">
         <select id="categoryFilter" class="filter-select">
@@ -313,12 +317,12 @@
           <option value="A2">A2</option>
         </select>
       </div>
-      
+
       <div class="loading" id="loading">
         <div class="loading-spinner"></div>
         <p>Memuat data...</p>
       </div>
-      
+
       <div class="table-container">
         <table id="optkTable">
           <thead>
@@ -333,16 +337,12 @@
               <th>Daerah Sebar</th>
             </tr>
           </thead>
-          <tbody id="tableBody">
-            <!-- Data akan diisi oleh JavaScript -->
-          </tbody>
+          <tbody id="tableBody"></tbody>
         </table>
       </div>
-      
-      <div class="pagination" id="pagination">
-        <!-- Pagination akan diisi oleh JavaScript -->
-      </div>
-      
+
+      <div class="pagination" id="pagination"></div>
+
       <a href="#" id="downloadBtn" class="download-btn">
         <i class="fas fa-download"></i> Unduh Data CSV
       </a>
@@ -354,75 +354,56 @@
   </footer>
 
   <script>
-    // Data akan dimuat dari file JSON eksternal
     let allCommodityData = [];
     let currentPage = 1;
-    const rowsPerPage = 20; // Lebih banyak data per halaman
+    const rowsPerPage = 20;
     let filteredData = [];
     let currentCommodity = "all";
 
-    // Fungsi untuk memuat data dari file JSON
     async function loadData() {
       const loadingElement = document.getElementById('loading');
       loadingElement.style.display = 'block';
-      
+
       try {
-        // Coba muat data dari file JSON
         const response = await fetch('data/optk-data.json');
-        if (response.ok) {
-          allCommodityData = await response.json();
-        } else {
-          // Fallback ke data contoh jika file tidak ditemukan
-          console.warn('File data tidak ditemukan, menggunakan data contoh');
-          allCommodityData = getSampleData();
-        }
-      } catch (error) {
-        console.error('Error loading data:', error);
+        allCommodityData = response.ok ? await response.json() : getSampleData();
+      } catch {
         allCommodityData = getSampleData();
       }
-      
+
       loadingElement.style.display = 'none';
       filteredData = [...allCommodityData];
       populateTable(filteredData, currentPage);
     }
 
-    // Data contoh jika file JSON tidak tersedia
     function getSampleData() {
       return [
-        // Data contoh seperti sebelumnya
         {
           no: 1,
           commodity: "Apel",
           jenis: "SERANGGA",
           kategori: "A1",
           nama: "Alsophila pometaria (Harris); (Syn. Anisopterix pometaria, Anisopteryx pometaria); (Lepidoptera: Geometridae); fall cankerworm",
-          inang: "Acer spp. (maple), Fraxinus spp., Hackberry, Juglan sp. (walnut), Malus domestica (apel, apple), Pelargonium (geranium), Pyrus communis (pir, pear), Quercus spp. (oak), Rose, Salix sp. (willow), Ulmus sp. (elm), other stone fruit",
-          media: "batang (stems, trunks, shoots, branches), buah (fruits), bunga (flowers, inflorescences, cones, calyx), daun (leaves)",
+          inang: "Acer spp., Fraxinus spp., Hackberry, Juglan sp., Malus domestica, Pelargonium, Pyrus communis, Quercus spp., Rose, Salix sp., Ulmus sp., other stone fruit",
+          media: "batang, buah, bunga, daun",
           daerah: "America: Canada, USA"
-        },
-        // Tambahkan lebih banyak data contoh di sini...
+        }
       ];
     }
 
-    // Populate table with data
     function populateTable(data, page = 1) {
       const tableBody = document.getElementById('tableBody');
       tableBody.innerHTML = '';
-      
       const start = (page - 1) * rowsPerPage;
       const end = start + rowsPerPage;
       const paginatedData = data.slice(start, end);
-      
-      if (paginatedData.length === 0) {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="8" class="no-results">Tidak ada data yang ditemukan</td>`;
-        tableBody.appendChild(row);
+
+      if (!paginatedData.length) {
+        tableBody.innerHTML = `<tr><td colspan="8" class="no-results">Tidak ada data yang ditemukan</td></tr>`;
         return;
       }
-      
-      // Update nomor urut berdasarkan halaman
+
       let counter = start + 1;
-      
       paginatedData.forEach(rowData => {
         const row = document.createElement('tr');
         row.innerHTML = `
@@ -438,110 +419,71 @@
         tableBody.appendChild(row);
         counter++;
       });
-      
+
       setupPagination(data, page);
     }
 
-    // Setup pagination
     function setupPagination(data, page) {
       const paginationElement = document.getElementById('pagination');
       paginationElement.innerHTML = '';
-      
       const pageCount = Math.ceil(data.length / rowsPerPage);
-      
       if (pageCount <= 1) return;
-      
-      // Previous button
+
       if (page > 1) {
         const prevButton = document.createElement('button');
         prevButton.innerText = '←';
-        prevButton.addEventListener('click', () => {
-          currentPage = page - 1;
-          populateTable(filteredData, currentPage);
-        });
+        prevButton.addEventListener('click', () => { currentPage = page - 1; populateTable(filteredData, currentPage); });
         paginationElement.appendChild(prevButton);
       }
-      
-      // Page buttons
+
       const maxVisiblePages = 5;
       let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
       let endPage = Math.min(pageCount, startPage + maxVisiblePages - 1);
-      
-      if (endPage - startPage + 1 < maxVisiblePages) {
-        startPage = Math.max(1, endPage - maxVisiblePages + 1);
-      }
-      
+      if (endPage - startPage + 1 < maxVisiblePages) startPage = Math.max(1, endPage - maxVisiblePages + 1);
+
       for (let i = startPage; i <= endPage; i++) {
         const button = document.createElement('button');
         button.innerText = i;
-        
-        if (i === page) {
-          button.classList.add('active');
-        }
-        
-        button.addEventListener('click', () => {
-          currentPage = i;
-          populateTable(filteredData, currentPage);
-        });
-        
+        if (i === page) button.classList.add('active');
+        button.addEventListener('click', () => { currentPage = i; populateTable(filteredData, currentPage); });
         paginationElement.appendChild(button);
       }
-      
-      // Next button
+
       if (page < pageCount) {
         const nextButton = document.createElement('button');
         nextButton.innerText = '→';
-        nextButton.addEventListener('click', () => {
-          currentPage = page + 1;
-          populateTable(filteredData, currentPage);
-        });
+        nextButton.addEventListener('click', () => { currentPage = page + 1; populateTable(filteredData, currentPage); });
         paginationElement.appendChild(nextButton);
       }
     }
 
-    // Filter data based on search and filters
     function filterData() {
       const searchValue = document.getElementById('searchInput').value.toLowerCase();
       const categoryValue = document.getElementById('categoryFilter').value;
       const statusValue = document.getElementById('statusFilter').value;
-      
+
       filteredData = allCommodityData.filter(item => {
-        // Filter by commodity tab
-        if (currentCommodity !== 'all' && item.commodity.toLowerCase() !== currentCommodity) {
-          return false;
-        }
-        
-        // Filter by search value
+        if (currentCommodity !== 'all' && item.commodity.toLowerCase() !== currentCommodity) return false;
+
         const matchesSearch = 
           (item.nama && item.nama.toLowerCase().includes(searchValue)) ||
           (item.inang && item.inang.toLowerCase().includes(searchValue)) ||
           (item.daerah && item.daerah.toLowerCase().includes(searchValue)) ||
           (item.commodity && item.commodity.toLowerCase().includes(searchValue));
-        
-        // Filter by category
+
         const matchesCategory = categoryValue === '' || item.jenis === categoryValue;
-        
-        // Filter by status
         const matchesStatus = statusValue === '' || item.kategori === statusValue;
-        
+
         return matchesSearch && matchesCategory && matchesStatus;
       });
-      
+
       currentPage = 1;
       populateTable(filteredData, currentPage);
     }
 
-    // Fungsi untuk mengunduh data sebagai CSV
     function downloadCSV() {
-      if (filteredData.length === 0) {
-        alert('Tidak ada data untuk diunduh');
-        return;
-      }
-      
-      // Buat header CSV
+      if (!filteredData.length) { alert('Tidak ada data untuk diunduh'); return; }
       let csvContent = "No,Komoditas,Jenis OPTK,Kategori,Nama OPTK,Inang/Host,Media Pembawa,Daerah Sebar\n";
-      
-      // Tambahkan data
       filteredData.forEach((row, index) => {
         const rowData = [
           index + 1,
@@ -555,28 +497,21 @@
         ];
         csvContent += rowData.join(',') + '\n';
       });
-      
-      // Buat blob dan unduh
+
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement('a');
-      const url = URL.createObjectURL(blob);
-      
-      link.setAttribute('href', url);
+      link.href = URL.createObjectURL(blob);
       link.setAttribute('download', `data_optk_${currentCommodity}_${new Date().toISOString().slice(0,10)}.csv`);
-      link.style.visibility = 'hidden';
-      
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
 
-    // Set up event listeners
     function setupEventListeners() {
       document.getElementById('searchInput').addEventListener('input', filterData);
       document.getElementById('categoryFilter').addEventListener('change', filterData);
       document.getElementById('statusFilter').addEventListener('change', filterData);
-      
-      // Tab buttons
+
       const tabButtons = document.querySelectorAll('.tab-btn');
       tabButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -586,15 +521,10 @@
           filterData();
         });
       });
-      
-      // Download button
-      document.getElementById('downloadBtn').addEventListener('click', (e) => {
-        e.preventDefault();
-        downloadCSV();
-      });
+
+      document.getElementById('downloadBtn').addEventListener('click', e => { e.preventDefault(); downloadCSV(); });
     }
 
-    // Initialize the page
     document.addEventListener('DOMContentLoaded', () => {
       loadData();
       setupEventListeners();
