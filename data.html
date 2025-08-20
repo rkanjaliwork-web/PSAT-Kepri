@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Data OPTK</title>
-  <link rel="stylesheet" href="css/app.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/app.css" />
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+
+  <!-- jQuery & DataTables -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
-  <header class="navbar">
+  <header class="navbar-container">
     <div class="logo">
       <img src="img/logo.png" alt="Logo Karantina" />
-      <h1>OPTK Kepri</h1>
     </div>
-    <nav>
+    <nav class="nav-list">
       <ul>
         <li><a href="index.html">Beranda</a></li>
-        <li><a href="buku-saku.html">Buku Saku</a></li>
-        <li><a href="data.html" class="active">Data OPTK</a></li>
+        <li><a href="data.html">Data OPTK</a></li>
+        <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="content">
-    <h2>Data OPTK</h2>
-    <p>Pilih dataset untuk ditampilkan:</p>
-    <select id="dataset">
-      <option value="apel.csv">Apel</option>
-      <option value="pir.csv">Pir</option>
-      <option value="anggur.csv">Anggur</option>
-      <option value="bawang_bombay.csv">Bawang Bombay</option>
-      <option value="bawang_putih.csv">Bawang Putih</option>
-    </select>
-
-    <input type="text" id="search" placeholder="Cari data..." />
-
-    <table id="data-table">
-      <thead></thead>
-      <tbody></tbody>
+  <main>
+    <h2>Data OPTK - Apel, Anggur, Pir, Bawang Bombay, Bawang Putih</h2>
+    <table id="optkTable" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Komoditas</th>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
     </table>
   </main>
 
-  <script src="js/script.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Load CSV files (gabung beberapa jadi satu tabel)
+      const files = [
+        { name: "Apel", path: "data/apel.csv" },
+        { name: "Anggur", path: "data/anggur.csv" },
+        { name: "Pir", path: "data/pir.csv" },
+        { name: "Bawang Bombay", path: "data/bawang_bombay.csv" },
+        { name: "Bawang Putih", path: "data/bawang_putih.csv" }
+      ];
+
+      function loadCSV(file, callback) {
+        $.get(file.path, function (data) {
+          const rows = data.trim().split("\n").slice(1); // skip header
+          rows.forEach(row => {
+            const cols = row.split(",");
+            $("#optkTable tbody").append(
+              `<tr>
+                <td>${file.name}</td>
+                <td>${cols[0]}</td>
+                <td>${cols[1]}</td>
+                <td>${cols[2]}</td>
+              </tr>`
+            );
+          });
+          callback();
+        });
+      }
+
+      let loaded = 0;
+      files.forEach(file => {
+        loadCSV(file, function () {
+          loaded++;
+          if (loaded === files.length) {
+            $("#optkTable").DataTable();
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
