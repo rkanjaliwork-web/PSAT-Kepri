@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data OPTK</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <h1>📊 Data OPTK</h1>
+    <nav>
+      <a href="index.html">Beranda</a>
+      <a href="data.html">Data OPTK</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <h2>Daftar OPTK per Komoditas</h2>
+    <label for="komoditas">Pilih Komoditas:</label>
+    <select id="komoditas">
+      <option value="apel.csv">Apel</option>
+      <option value="anggur.csv">Anggur</option>
+      <option value="pir.csv">Pir</option>
+      <option value="bawang_bombay.csv">Bawang Bombay</option>
+      <option value="bawang_putih.csv">Bawang Putih</option>
+    </select>
+
+    <input type="text" id="search" placeholder="🔍 Cari OPTK...">
+
+    <table id="optk-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama OPTK</th>
+          <th>Nama Ilmiah</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <script>
+    const select = document.getElementById("komoditas");
+    const search = document.getElementById("search");
+    const tbody = document.querySelector("#optk-table tbody");
+
+    function loadCSV(file) {
+      Papa.parse("data/" + file, {
+        download: true,
+        header: true,
+        complete: function(results) {
+          tbody.innerHTML = "";
+          results.data.forEach((row, i) => {
+            if (row["Nama OPTK"]) {
+              const tr = document.createElement("tr");
+              tr.innerHTML = `
+                <td>${i+1}</td>
+                <td>${row["Nama OPTK"]}</td>
+                <td>${row["Nama Ilmiah"] || ""}</td>
+                <td>${row["Keterangan"] || ""}</td>
+              `;
+              tbody.appendChild(tr);
+            }
+          });
+        }
+      });
+    }
+
+    select.addEventListener("change", () => loadCSV(select.value));
+    search.addEventListener("keyup", () => {
+      const filter = search.value.toLowerCase();
+      Array.from(tbody.getElementsByTagName("tr")).forEach(tr => {
+        const text = tr.textContent.toLowerCase();
+        tr.style.display = text.includes(filter) ? "" : "none";
+      });
+    });
+
+    // load default
+    loadCSV(select.value);
+  </script>
+</body>
+</html>
