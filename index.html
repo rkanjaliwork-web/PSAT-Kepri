@@ -8,6 +8,9 @@
   <!-- CSS -->
   <link rel="stylesheet" href="css/app.css" />
 
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -47,38 +50,66 @@
           pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Kepulauan Riau. 
           Data meliputi apel, anggur, pir, bawang bombay, dan bawang putih.
         </p>
-        <button onclick="window.location.href='buku-saku/buku-saku.pdf'">Lihat Buku Saku</button>
+        <button onclick="document.getElementById('menu').scrollIntoView()">Lihat Data</button>
       </div>
       <div class="content-image">
         <img src="img/logo.png" alt="Karantina Pertanian" />
       </div>
     </div>
 
+    <!-- DATA SECTION -->
     <section id="menu" class="menu-section">
-      <h2>Data OPTK per Komoditas</h2>
-      <ul>
-        <li><a href="data/apel.csv" target="_blank">🍎 Apel</a></li>
-        <li><a href="data/anggur.csv" target="_blank">🍇 Anggur</a></li>
-        <li><a href="data/pir.csv" target="_blank">🍐 Pir</a></li>
-        <li><a href="data/bawang_bombay.csv" target="_blank">🧅 Bawang Bombay</a></li>
-        <li><a href="data/bawang_putih.csv" target="_blank">🧄 Bawang Putih</a></li>
-      </ul>
+      <h2>Data OPTK - Apel</h2>
+      <table id="tabelApel" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Nama OPTK</th>
+            <th>Nama Ilmiah</th>
+            <th>Negara Asal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Kutu Apel</td><td>Aphis pomi</td><td>China</td></tr>
+          <tr><td>Lalat Buah</td><td>Bactrocera dorsalis</td><td>Thailand</td></tr>
+          <tr><td>Kutu Daun</td><td>Dysaphis plantaginea</td><td>India</td></tr>
+        </tbody>
+      </table>
     </section>
 
-    <aside>
-      <div class="social-media">
-        <ul>
-          <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-          <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-        </ul>
-      </div>
-    </aside>
+    <section class="menu-section">
+      <h2>Data OPTK - Anggur</h2>
+      <table id="tabelAnggur" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Nama OPTK</th>
+            <th>Nama Ilmiah</th>
+            <th>Negara Asal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lalat Buah Mediterania</td><td>Ceratitis capitata</td><td>Mesir</td></tr>
+          <tr><td>Kumbang Daun Anggur</td><td>Xylotrechus arvicola</td><td>Spanyol</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Tambah tabel lain untuk Pir, Bawang Bombay, Bawang Putih -->
+
   </main>
 
   <footer id="kontak">
     <p>© 2025 Karantina Pertanian Kepulauan Riau</p>
   </footer>
+
+  <!-- JQuery & DataTables JS -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#tabelApel').DataTable();
+      $('#tabelAnggur').DataTable();
+      // tambahkan DataTable() untuk tabel lain
+    });
+  </script>
 </body>
 </html>
