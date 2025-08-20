@@ -53,15 +53,15 @@ main {
 
 .content {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 2rem;
   align-items: flex-start;
-  flex-wrap: wrap; /* stack di mobile */
+  flex-wrap: wrap;
 }
 
 .content-description {
   flex: 1 1 60%;
-  max-width: 700px; /* batasi lebar teks di desktop */
+  max-width: 700px;
 }
 
 .content-description .title {
@@ -90,6 +90,17 @@ button:hover {
   transform: translateY(-3px);
 }
 
+/* ===== Preview Buku Saku ===== */
+.pdf-preview {
+  width: 100%;
+  max-width: 900px; /* batasi lebar desktop */
+  height: 600px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto; /* center iframe */
+}
+
 /* ===== Footer ===== */
 footer {
   background: #004d40;
@@ -107,6 +118,11 @@ footer {
 
   .content-description .title {
     font-size: 1.8rem;
+  }
+
+  .pdf-preview {
+    max-width: 100%; /* desktop kecil/tablet tetap responsive */
+    height: 500px;
   }
 }
 
@@ -138,9 +154,13 @@ footer {
     width: 80%;
     max-width: 250px;
   }
+
+  .pdf-preview {
+    height: 400px; /* nyaman di layar kecil */
+  }
 }
 
-/* ===== Fade-in Animasi Teks ===== */
+/* ===== Fade-in Animasi ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
