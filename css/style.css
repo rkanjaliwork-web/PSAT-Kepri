@@ -76,6 +76,7 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  overflow-x: hidden; /* Mencegah scroll horizontal */
 }
 
 .content {
@@ -128,6 +129,9 @@ button:hover {
   background: #f5f5f5;
   border-radius: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Memastikan konten di tengah */
 }
 
 .menu-section h2 {
@@ -135,10 +139,16 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+/* Wrapper untuk iframe agar bisa diatur posisinya */
+.iframe-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* Menempatkan iframe di tengah */
+}
+
 .iframe-container {
   width: 100%;
   max-width: 600px;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
 }
@@ -264,6 +274,10 @@ footer {
   
   button {
     width: 100%;
+    padding: 1rem;
+  }
+  
+  .menu-section {
     padding: 1rem;
   }
 }
