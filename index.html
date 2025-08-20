@@ -32,26 +32,30 @@
 
   <main>
     <!-- Content utama -->
-    <div class="content">
-      <div class="content-description fade-in">
+    <div class="content fade-in">
+      <div class="content-description">
         <h1 class="title">OPTK di Komoditas PSAT <br> Wilayah Kepulauan Riau</h1>
         <p>
           Website ini memuat informasi mengenai Organisme Pengganggu Tumbuhan Karantina (OPTK) 
           pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Kepulauan Riau. 
           Data meliputi apel, anggur, pir, bawang bombay, dan bawang putih.
         </p>
-        <button onclick="window.open('buku-saku/buku-saku.pdf', '_blank')">Lihat Buku Saku</button>
+        <button onclick="window.open('buku-saku/buku-saku.pdf', '_blank')">Buka Buku Saku</button>
       </div>
     </div>
 
-    <!-- Preview Buku Saku -->
-    <section id="buku-saku" class="menu-section fade-in">
-      <h2>Preview Buku Saku</h2>
-      <iframe src="buku-saku/buku-saku.pdf" class="pdf-preview"></iframe>
+    <!-- Kotak Saran -->
+    <section class="menu-section fade-in">
+      <h2>Kotak Saran</h2>
+      <form action="https://example.com/submit-saran" method="post">
+        <textarea name="saran" rows="5" placeholder="Tulis saranmu di sini..." required></textarea>
+        <br>
+        <button type="submit">Kirim Saran</button>
+      </form>
     </section>
   </main>
 
-  <footer id="kontak">
+  <footer>
     <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
   </footer>
 
