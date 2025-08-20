@@ -44,9 +44,10 @@
       </div>
     </div>
 
-    <!-- Preview Buku Saku -->
+    <!-- Preview Buku Saku (collapsible di mobile) -->
     <section class="menu-section fade-in">
       <h2>Preview Buku Saku</h2>
+      <button class="toggle-preview">Tampilkan Preview Buku Saku</button>
       <div class="iframe-container">
         <iframe src="buku-saku/buku-saku.pdf" width="100%" height="600px" style="border:1px solid #ccc; border-radius:8px;"></iframe>
       </div>
@@ -67,8 +68,9 @@
     <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
   </footer>
 
-  <!-- JS untuk fade-in -->
+  <!-- JS untuk fade-in & toggle preview -->
   <script>
+    // Fade-in
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = { threshold: 0.2 };
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -79,4 +81,21 @@
         }
       });
     }, appearOptions);
-    faders.forEac
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    // Toggle preview buku saku
+    const toggleBtn = document.querySelector('.toggle-preview');
+    const iframeContainer = document.querySelector('.iframe-container');
+
+    toggleBtn.addEventListener('click', () => {
+      if (iframeContainer.style.display === 'block') {
+        iframeContainer.style.display = 'none';
+        toggleBtn.textContent = 'Tampilkan Preview Buku Saku';
+      } else {
+        iframeContainer.style.display = 'block';
+        toggleBtn.textContent = 'Sembunyikan Preview Buku Saku';
+      }
+    });
+  </script>
+</body>
+</html>
