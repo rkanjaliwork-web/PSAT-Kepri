@@ -34,7 +34,7 @@
     <nav class="nav-list">
       <ul>
         <li><a href="#">Beranda</a></li>
-        <li><a href="#menu">Data OPTK</a></li>
+        <li><a href="#data">Data OPTK</a></li>
         <li><a href="buku-saku/buku-saku.pdf" target="_blank">Buku Saku</a></li>
         <li><a href="#kontak">Kontak</a></li>
       </ul>
@@ -48,9 +48,9 @@
         <p>
           Website ini memuat informasi mengenai Organisme Pengganggu Tumbuhan Karantina (OPTK) 
           pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Kepulauan Riau. 
-          Data meliputi apel, anggur, pir, bawang bombay, dan bawang putih.
+          Data meliputi <b>apel, anggur, pir, bawang bombay, dan bawang putih</b>.
         </p>
-        <button onclick="document.getElementById('menu').scrollIntoView()">Lihat Data</button>
+        <button onclick="document.getElementById('data').scrollIntoView()">Lihat Data</button>
       </div>
       <div class="content-image">
         <img src="img/logo.png" alt="Karantina Pertanian" />
@@ -58,7 +58,7 @@
     </div>
 
     <!-- DATA SECTION -->
-    <section id="menu" class="menu-section">
+    <section id="data" class="menu-section">
       <h2>Data OPTK - Apel</h2>
       <table id="tabelApel" class="display" style="width:100%">
         <thead>
@@ -93,7 +93,56 @@
       </table>
     </section>
 
-    <!-- Tambah tabel lain untuk Pir, Bawang Bombay, Bawang Putih -->
+    <section class="menu-section">
+      <h2>Data OPTK - Pir</h2>
+      <table id="tabelPir" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Nama OPTK</th>
+            <th>Nama Ilmiah</th>
+            <th>Negara Asal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Kutu Pir Hijau</td><td>Psylla pyricola</td><td>Amerika Serikat</td></tr>
+          <tr><td>Bercak Daun Pir</td><td>Venturia pirina</td><td>Prancis</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="menu-section">
+      <h2>Data OPTK - Bawang Bombay</h2>
+      <table id="tabelBombay" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Nama OPTK</th>
+            <th>Nama Ilmiah</th>
+            <th>Negara Asal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Lalat Akar Bawang</td><td>Delia antiqua</td><td>Belanda</td></tr>
+          <tr><td>Penyakit Busuk Leher</td><td>Botrytis allii</td><td>Kanada</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="menu-section">
+      <h2>Data OPTK - Bawang Putih</h2>
+      <table id="tabelPutih" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Nama OPTK</th>
+            <th>Nama Ilmiah</th>
+            <th>Negara Asal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Nematoda Bawang</td><td>Ditylenchus dipsaci</td><td>Turki</td></tr>
+          <tr><td>Embun Bawang Putih</td><td>Peronospora destructor</td><td>India</td></tr>
+        </tbody>
+      </table>
+    </section>
 
   </main>
 
@@ -108,7 +157,9 @@
     $(document).ready(function(){
       $('#tabelApel').DataTable();
       $('#tabelAnggur').DataTable();
-      // tambahkan DataTable() untuk tabel lain
+      $('#tabelPir').DataTable();
+      $('#tabelBombay').DataTable();
+      $('#tabelPutih').DataTable();
     });
   </script>
 </body>
