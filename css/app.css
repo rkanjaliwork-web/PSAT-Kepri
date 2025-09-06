@@ -164,23 +164,130 @@ button:hover {
   font-family: 'Quicksand', sans-serif;
 }
 
-/* ===== Kotak Saran ===== */
-textarea {
-  width: 100%;
-  max-width: 500px;
-  padding: 0.8rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  font-family: 'Quicksand', sans-serif;
-  display: block;
-  margin: 0 auto 1rem;
-}
+    /* ===== Kotak Saran ===== */
+    .saran-container {
+      background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+      border-radius: 12px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 25px rgba(0, 77, 64, 0.1);
+      text-align: center;
+      margin: 2rem auto;
+      max-width: 800px;
+      border: 1px solid #a5d6a7;
+    }
 
-textarea:focus {
-  outline: none;
-  border-color: #004d40;
-}
+    .saran-container h2 {
+      color: #004d40;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .saran-container h2:after {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 3px;
+      background: #4caf50;
+      margin: 8px auto 0;
+      border-radius: 3px;
+    }
+
+    .saran-container p {
+      color: #37474f;
+      margin-bottom: 1.8rem;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    .saran-box {
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-bottom: 1.5rem;
+    }
+
+    .saran-icon {
+      font-size: 3rem;
+      color: #4caf50;
+      margin-bottom: 1rem;
+    }
+
+    .saran-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #4285F4 0%, #34A853 100%);
+      color: white;
+      padding: 14px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .saran-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #34A853 0%, #4285F4 100%);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1;
+    }
+
+    .saran-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(66, 133, 244, 0.4);
+    }
+
+    .saran-btn:hover:before {
+      opacity: 1;
+    }
+
+    .saran-btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .saran-btn i {
+      margin-right: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .saran-features {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .feature {
+      background: white;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 150px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .feature i {
+      font-size: 1.8rem;
+      color: #4caf50;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: #37474f;
 
 /* ===== Footer ===== */
 footer {
