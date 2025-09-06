@@ -71,6 +71,7 @@
       border-radius: 8px;
       padding: 2rem;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
     }
 
     h2 {
@@ -79,32 +80,71 @@
     }
 
     .description {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
       color: #555;
     }
 
-    .commodity-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
+    .commodity-selection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
     }
 
-    .tab-btn {
-      padding: 0.5rem 1rem;
-      background: #e9ecef;
-      border: none;
-      border-radius: 4px;
+    .commodity-card {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 1.5rem;
       cursor: pointer;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 500;
       transition: all 0.3s;
+      border: 2px solid #e9ecef;
     }
 
-    .tab-btn.active,
-    .tab-btn:hover {
-      background: #4CAF50;
+    .commodity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-color: #4CAF50;
+    }
+
+    .commodity-card i {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #4CAF50;
+    }
+
+    .commodity-card h3 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .commodity-card p {
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .data-content {
+      display: none;
+      text-align: left;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: #6c757d;
       color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      margin-bottom: 1.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background-color: #5a6268;
     }
 
     .search-container {
@@ -258,6 +298,10 @@
         margin: 0.5rem 0;
       }
 
+      .commodity-selection {
+        grid-template-columns: 1fr;
+      }
+
       .search-container {
         flex-direction: column;
       }
@@ -285,67 +329,100 @@
 
   <main>
     <section class="data-container">
-      <h2>Data OPTK Semua Komoditas</h2>
-      <p class="description">
-        Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk berbagai komoditas pertanian:
+      <h2 id="mainTitle">Data OPTK Semua Komoditas</h2>
+      <p class="description" id="mainDescription">
+        Pilih komoditas untuk melihat daftar Organisme Pengganggu Tumbuhan Karantina (OPTK):
       </p>
 
-      <div class="commodity-tabs">
-        <button class="tab-btn active" data-commodity="all">Semua Komoditas</button>
-        <button class="tab-btn" data-commodity="apel">🍎 Apel</button>
-        <button class="tab-btn" data-commodity="anggur">🍇 Anggur</button>
-        <button class="tab-btn" data-commodity="pir">🍐 Pir</button>
-        <button class="tab-btn" data-commodity="bawang_bombay">🧅 Bawang Bombay</button>
-        <button class="tab-btn" data-commodity="bawang_putih">🧄 Bawang Putih</button>
+      <div class="commodity-selection" id="commoditySelection">
+        <div class="commodity-card" data-commodity="all">
+          <i class="fas fa-seedling"></i>
+          <h3>Semua Komoditas</h3>
+          <p>Lihat semua data OPTK</p>
+        </div>
+        <div class="commodity-card" data-commodity="apel">
+          <i class="fas fa-apple-alt"></i>
+          <h3>Apel</h3>
+          <p>OPTK pada tanaman apel</p>
+        </div>
+        <div class="commodity-card" data-commodity="anggur">
+          <i class="fas fa-wine-glass-alt"></i>
+          <h3>Anggur</h3>
+          <p>OPTK pada tanaman anggur</p>
+        </div>
+        <div class="commodity-card" data-commodity="pir">
+          <i class="fas fa-leaf"></i>
+          <h3>Pir</h3>
+          <p>OPTK pada tanaman pir</p>
+        </div>
+        <div class="commodity-card" data-commodity="bawang_bombay">
+          <i class="fas fa-ring"></i>
+          <h3>Bawang Bombay</h3>
+          <p>OPTK pada bawang bombay</p>
+        </div>
+        <div class="commodity-card" data-commodity="bawang_putih">
+          <i class="fas fa-stroopwafel"></i>
+          <h3>Bawang Putih</h3>
+          <p>OPTK pada bawang putih</p>
+        </div>
       </div>
 
-      <div class="search-container">
-        <input type="text" id="searchInput" class="search-box" placeholder="Cari OPTK, inang, atau daerah sebar...">
-        <select id="categoryFilter" class="filter-select">
-          <option value="">Semua Jenis</option>
-          <option value="SERANGGA">Serangga</option>
-          <option value="TUNGAU">Tungau</option>
-          <option value="GULMA NON PARASITIK">Gulma Non Parasitik</option>
-          <option value="CENDAWAN">Cendawan</option>
-          <option value="BAKTERI">Bakteri</option>
-          <option value="VIRUS">Virus</option>
-          <option value="VIROID">Viroid</option>
-        </select>
-        <select id="statusFilter" class="filter-select">
-          <option value="">Semua Status</option>
-          <option value="A1">A1</option>
-          <option value="A2">A2</option>
-        </select>
+      <div class="data-content" id="dataContent">
+        <button class="back-btn" id="backButton">
+          <i class="fas fa-arrow-left"></i> Kembali ke Pilihan Komoditas
+        </button>
+
+        <h2 id="contentTitle"></h2>
+        <p class="description" id="contentDescription"></p>
+
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-box" placeholder="Cari OPTK, inang, atau daerah sebar...">
+          <select id="categoryFilter" class="filter-select">
+            <option value="">Semua Jenis</option>
+            <option value="SERANGGA">Serangga</option>
+            <option value="TUNGAU">Tungau</option>
+            <option value="GULMA NON PARASITIK">Gulma Non Parasitik</option>
+            <option value="CENDAWAN">Cendawan</option>
+            <option value="BAKTERI">Bakteri</option>
+            <option value="VIRUS">Virus</option>
+            <option value="VIROID">Viroid</option>
+          </select>
+          <select id="statusFilter" class="filter-select">
+            <option value="">Semua Status</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+          </select>
+        </div>
+
+        <div class="loading" id="loading">
+          <div class="loading-spinner"></div>
+          <p>Memuat data...</p>
+        </div>
+
+        <div class="table-container">
+          <table id="optkTable">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Komoditas</th>
+                <th>Jenis OPTK</th>
+                <th>Kategori</th>
+                <th>Nama OPTK</th>
+                <th>Inang/Host</th>
+                <th>Media Pembawa</th>
+                <th>Daerah Sebar</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination" id="pagination"></div>
+
+        <a href="#" id="downloadBtn" class="download-btn">
+          <i class="fas fa-download"></i> Unduh Data CSV
+        </a>
       </div>
-
-      <div class="loading" id="loading">
-        <div class="loading-spinner"></div>
-        <p>Memuat data...</p>
-      </div>
-
-      <div class="table-container">
-        <table id="optkTable">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Komoditas</th>
-              <th>Jenis OPTK</th>
-              <th>Kategori</th>
-              <th>Nama OPTK</th>
-              <th>Inang/Host</th>
-              <th>Media Pembawa</th>
-              <th>Daerah Sebar</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody"></tbody>
-        </table>
-      </div>
-
-      <div class="pagination" id="pagination"></div>
-
-      <a href="#" id="downloadBtn" class="download-btn">
-        <i class="fas fa-download"></i> Unduh Data CSV
-      </a>
     </section>
   </main>
 
@@ -358,7 +435,7 @@
     let currentPage = 1;
     const rowsPerPage = 20;
     let filteredData = [];
-    let currentCommodity = "all";
+    let currentCommodity = "";
 
     async function loadData() {
       const loadingElement = document.getElementById('loading');
@@ -372,22 +449,117 @@
       }
 
       loadingElement.style.display = 'none';
-      filteredData = [...allCommodityData];
-      populateTable(filteredData, currentPage);
     }
 
     function getSampleData() {
       return [
         {
-          "No": 1,"commodity": "Bawang Putih",
-          "jenis": "SERANGGA",
-          "kategori": "A1",
-          "nama": "Chrysodeixis includens (Walker, 1858); (Syn. Autographa oo Stoll, Autographa rogationis, Phalaena oo Stoll, Phytometra oo Cramer,\" Phytometra rogationis, \"Plusia binotula Herrich- Schaffer 1868, Plusia dyaus Grote 1875, Plusia hamifera Walker 1858, Plusia includens Walker 1858, Plusia oo Stoll in Cramer 1782, Plusia rogationis Guenee, Pseudoplusia includens (Walker, 1858), Pseudoplusia pertusa Moschler 1880, Pseudoplusia rogationis (Guenee, 1852) Pusia culta Lintner 1885); (Lepidoptera: Noctuidae); soybean looper",
-          "inang": "Abelmoschus esculentus (okra), Allium sativum (bawang putih, garlic), Amaranthus caudatus (love- lies-bleeding), Amaranthus hibridus (smooth pigweed), \"Amaranthus sp. (Amaranth), Ananas comosus (nenas, pineapple), Apium graveolens (seledri, celery), Arachis hypogaea (kaang tanah, groundnut), Asparagus officinalis (asparagus), Brassicca oleraceae (kubis, kubis bunga, cabbage, cauliflower), Brassica oleracea var. italica (brokoli, broccoli), Brassica oleracea var. viridis (collards), Cajanus cajan (pigeon pea), Capsicum annuum (cabai merah, paprika, bell-pepper), Celosia cristata, Chenopodium album, Citrullus lanatus (semangka, watermelon), Cyamopsis tetragonoloba, Daucus carota (wortel, carrot), Dianthus caryophyllus, Eryngium foetidum, Euphorbia pulcherrima,\" \"Parthenium hysterophorus, Parthenium sp., Senecio cineraria (dusty miller), Spinacia oleracea (bayam jepang, spinach), Verbena spp., Zea mays (jagung, corn, maize)\" \"Gerbera jamesonii, Glycine max (kedelai, soyabean), Gossypium hirsutum, Halianthus annuus, Ipomoea batatas (ubi jalar, sweet potato), Lactuca sativa (selada, lettuce), Lepidium virginicum, Matthiola incana, Nasturtium officinale, Nicotiana rustica, Nicotiana tabacum (tembakau, tobacco), Pssiflora edulis (passionfruit), Peperomia obtusifolia, Persea americana (alpukat, avocado), Phaseolus lunatus (lima bena), Petroselinum crispum (peterseli, parsley), Philodendron sp., Portulaca oleracea, Pueraria montana var. lobata (kudzu), Saccharum officinarum,(tebu, sugarcane), Saintpaulia lonantha, Schefflera actinophylla (umbrella tree),\" \"Senecio bicolor, Solanum mycopersicum (tomat, tomato), Solanum melongena (terung, aubergine), Solanum tuberosum (kentang, potato), Sorghum bicolor (sorghum),Aster sp., Calendula officinalis (pot marigold), Bidens pilosa, Chrysanthemum moriflorum, Chrysanthemum sp., Clibadium surinamense, Conyza bonariensis, Conyza canadensis, Emilia fosbergii, Eupatorium sp., Galinsoga sp., Gerbera jamesonii (African daisy), Helianthus annuus, (bunga matahari, sunflower), Helianthus spp., Lactuca sativa (selada, lettuce), Lactuca serriola (prickly lettuce), Mikania cordifolia, Milleria quinqueflora,",
-          "media": "biji (seeds), daun (leaves), buah (fruits), seluruh bagian tanaman (whole plants)",
-          "daerah": "America: Argentina, Bermuda, Bolivia, Brazil, Canada, Chile, Colombia, Costa Rica, Cuba, Dominica, Ecuador, Guyana, Honduras, Jamaica, Montserrat, Nicaragua, Peru, Puerto Rico, \"Saint Kitts and Nevis, Saint Lucia, USA, Venezuela, Virgin Islands Oceania: Australia"
+          no: 1,
+          commodity: "Apel",
+          jenis: "SERANGGA",
+          kategori: "A1",
+          nama: "Alsophila pometaria (Harris); (Syn. Anisopterix pometaria, Anisopteryx pometaria); (Lepidoptera: Geometridae); fall cankerworm",
+          inang: "Acer spp., Fraxinus spp., Hackberry, Juglan sp., Malus domestica, Pelargonium, Pyrus communis, Quercus spp., Rose, Salix sp., Ulmus sp., other stone fruit",
+          media: "batang, buah, bunga, daun",
+          daerah: "America: Canada, USA"
+        },
+        {
+          no: 2,
+          commodity: "Anggur",
+          jenis: "CENDAWAN",
+          kategori: "A2",
+          nama: "Plasmopara viticola",
+          inang: "Anggur",
+          media: "daun, buah",
+          daerah: "Eropa, Amerika Utara"
+        },
+        {
+          no: 3,
+          commodity: "Pir",
+          jenis: "BAKTERI",
+          kategori: "A1",
+          nama: "Erwinia amylovora",
+          inang: "Pir, Apel, Quince",
+          media: "bunga, buah, tunas",
+          daerah: "Amerika Utara, Eropa, Selandia Baru"
+        },
+        {
+          no: 4,
+          commodity: "Bawang Bombay",
+          jenis: "SERANGGA",
+          kategori: "A2",
+          nama: "Thrips tabaci",
+          inang: "Bawang Bombay, Bawang Putih, Kubis",
+          media: "daun, umbi",
+          daerah: "Seluruh dunia"
+        },
+        {
+          no: 5,
+          commodity: "Bawang Putih",
+          jenis: "VIRUS",
+          kategori: "A1",
+          nama: "Onion yellow dwarf virus",
+          inang: "Bawang Putih, Bawang Bombay",
+          media: "umbi, daun",
+          daerah: "Asia, Eropa, Amerika"
+        },
+        {
+          no: 6,
+          commodity: "Apel",
+          jenis: "CENDAWAN",
+          kategori: "A2",
+          nama: "Venturia inaequalis",
+          inang: "Apel",
+          media: "daun, buah",
+          daerah: "Seluruh dunia"
+        },
+        {
+          no: 7,
+          commodity: "Anggur",
+          jenis: "SERANGGA",
+          kategori: "A1",
+          nama: "Phylloxera vitifoliae",
+          inang: "Anggur",
+          media: "akar, daun",
+          daerah: "Eropa, Amerika, Australia"
         }
       ];
+    }
+
+    function showCommodityData(commodity) {
+      currentCommodity = commodity;
+      
+      // Update judul dan deskripsi
+      const commodityNames = {
+        'all': 'Semua Komoditas',
+        'apel': 'Apel',
+        'anggur': 'Anggur',
+        'pir': 'Pir',
+        'bawang_bombay': 'Bawang Bombay',
+        'bawang_putih': 'Bawang Putih'
+      };
+      
+      document.getElementById('contentTitle').textContent = `Data OPTK ${commodityNames[commodity]}`;
+      document.getElementById('contentDescription').textContent = 
+        `Berikut adalah daftar Organisme Pengganggu Tumbuhan Karantina (OPTK) untuk komoditas ${commodityNames[commodity]}:`;
+      
+      // Sembunyikan pilihan komoditas, tampilkan konten data
+      document.getElementById('commoditySelection').style.display = 'none';
+      document.getElementById('dataContent').style.display = 'block';
+      
+      // Filter data berdasarkan komoditas yang dipilih
+      filterData();
+    }
+
+    function goBackToSelection() {
+      // Sembunyikan konten data, tampilkan pilihan komoditas
+      document.getElementById('dataContent').style.display = 'none';
+      document.getElementById('commoditySelection').style.display = 'grid';
+      
+      // Reset filter
+      document.getElementById('searchInput').value = '';
+      document.getElementById('categoryFilter').value = '';
+      document.getElementById('statusFilter').value = '';
     }
 
     function populateTable(data, page = 1) {
@@ -431,27 +603,41 @@
       if (page > 1) {
         const prevButton = document.createElement('button');
         prevButton.innerText = '←';
-        prevButton.addEventListener('click', () => { currentPage = page - 1; populateTable(filteredData, currentPage); });
+        prevButton.addEventListener('click', () => { 
+          currentPage = page - 1; 
+          populateTable(filteredData, currentPage); 
+          window.scrollTo({ top: document.getElementById('optkTable').offsetTop - 100, behavior: 'smooth' });
+        });
         paginationElement.appendChild(prevButton);
       }
 
       const maxVisiblePages = 5;
       let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
       let endPage = Math.min(pageCount, startPage + maxVisiblePages - 1);
-      if (endPage - startPage + 1 < maxVisiblePages) startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      if (endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+      }
 
       for (let i = startPage; i <= endPage; i++) {
         const button = document.createElement('button');
         button.innerText = i;
         if (i === page) button.classList.add('active');
-        button.addEventListener('click', () => { currentPage = i; populateTable(filteredData, currentPage); });
+        button.addEventListener('click', () => { 
+          currentPage = i; 
+          populateTable(filteredData, currentPage); 
+          window.scrollTo({ top: document.getElementById('optkTable').offsetTop - 100, behavior: 'smooth' });
+        });
         paginationElement.appendChild(button);
       }
 
       if (page < pageCount) {
         const nextButton = document.createElement('button');
         nextButton.innerText = '→';
-        nextButton.addEventListener('click', () => { currentPage = page + 1; populateTable(filteredData, currentPage); });
+        nextButton.addEventListener('click', () => { 
+          currentPage = page + 1; 
+          populateTable(filteredData, currentPage); 
+          window.scrollTo({ top: document.getElementById('optkTable').offsetTop - 100, behavior: 'smooth' });
+        });
         paginationElement.appendChild(nextButton);
       }
     }
@@ -462,15 +648,24 @@
       const statusValue = document.getElementById('statusFilter').value;
 
       filteredData = allCommodityData.filter(item => {
-        if (currentCommodity !== 'all' && item.commodity.toLowerCase() !== currentCommodity) return false;
+        // Filter berdasarkan komoditas yang dipilih
+        if (currentCommodity !== 'all') {
+          // Normalisasi nama komoditas untuk pencocokan
+          const commodityNormalized = item.commodity ? item.commodity.toLowerCase().replace(/\s+/g, '_') : '';
+          if (commodityNormalized !== currentCommodity) return false;
+        }
 
+        // Filter berdasarkan pencarian
         const matchesSearch = 
           (item.nama && item.nama.toLowerCase().includes(searchValue)) ||
           (item.inang && item.inang.toLowerCase().includes(searchValue)) ||
           (item.daerah && item.daerah.toLowerCase().includes(searchValue)) ||
           (item.commodity && item.commodity.toLowerCase().includes(searchValue));
 
+        // Filter berdasarkan kategori
         const matchesCategory = categoryValue === '' || item.jenis === categoryValue;
+        
+        // Filter berdasarkan status
         const matchesStatus = statusValue === '' || item.kategori === statusValue;
 
         return matchesSearch && matchesCategory && matchesStatus;
@@ -481,7 +676,11 @@
     }
 
     function downloadCSV() {
-      if (!filteredData.length) { alert('Tidak ada data untuk diunduh'); return; }
+      if (!filteredData.length) { 
+        alert('Tidak ada data untuk diunduh'); 
+        return; 
+      }
+      
       let csvContent = "No,Komoditas,Jenis OPTK,Kategori,Nama OPTK,Inang/Host,Media Pembawa,Daerah Sebar\n";
       filteredData.forEach((row, index) => {
         const rowData = [
@@ -500,28 +699,47 @@
       const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const link = document.createElement('a');
       link.href = URL.createObjectURL(blob);
-      link.setAttribute('download', `data_optk_${currentCommodity}_${new Date().toISOString().slice(0,10)}.csv`);
+      
+      // Nama file berdasarkan komoditas yang aktif
+      const commodityNames = {
+        'all': 'semua_komoditas',
+        'apel': 'apel',
+        'anggur': 'anggur',
+        'pir': 'pir',
+        'bawang_bombay': 'bawang_bombay',
+        'bawang_putih': 'bawang_putih'
+      };
+      
+      link.setAttribute('download', `data_optk_${commodityNames[currentCommodity]}_${new Date().toISOString().slice(0,10)}.csv`);
+      
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     }
 
     function setupEventListeners() {
+      // Event listener untuk kartu komoditas
+      const commodityCards = document.querySelectorAll('.commodity-card');
+      commodityCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const commodity = card.getAttribute('data-commodity');
+          showCommodityData(commodity);
+        });
+      });
+
+      // Event listener untuk tombol kembali
+      document.getElementById('backButton').addEventListener('click', goBackToSelection);
+
+      // Event listener untuk filter
       document.getElementById('searchInput').addEventListener('input', filterData);
       document.getElementById('categoryFilter').addEventListener('change', filterData);
       document.getElementById('statusFilter').addEventListener('change', filterData);
 
-      const tabButtons = document.querySelectorAll('.tab-btn');
-      tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
-          currentCommodity = button.getAttribute('data-commodity');
-          filterData();
-        });
+      // Event listener untuk tombol unduh
+      document.getElementById('downloadBtn').addEventListener('click', e => { 
+        e.preventDefault(); 
+        downloadCSV(); 
       });
-
-      document.getElementById('downloadBtn').addEventListener('click', e => { e.preventDefault(); downloadCSV(); });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
