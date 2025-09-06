@@ -99,6 +99,63 @@
     <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
   </footer>
 
-  <script src="js/script.js"></script>
+   <script>
+    // Fade-in animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const faders = document.querySelectorAll('.fade-in');
+      const appearOptions = { threshold: 0.2 };
+      const appearOnScroll = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('show');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, appearOptions);
+      
+      faders.forEach(fader => appearOnScroll.observe(fader));
+
+      // Toggle preview buku saku
+      const toggleBtn = document.getElementById('togglePreview');
+      const iframeContainer = document.getElementById('iframeContainer');
+
+      if (toggleBtn && iframeContainer) {
+        toggleBtn.addEventListener('click', () => {
+          iframeContainer.classList.toggle('active');
+          toggleBtn.textContent = iframeContainer.classList.contains('active') ? 
+            'Sembunyikan Preview Buku Saku' : 'Tampilkan Preview Buku Saku';
+        });
+      }
+
+      // Hamburger menu functionality
+      const hamburger = document.getElementById('hamburger');
+      const navList = document.getElementById('navList');
+
+      if (hamburger && navList) {
+        hamburger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          hamburger.classList.toggle('active');
+          navList.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!hamburger.contains(e.target) && !navList.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navList.classList.remove('active');
+          }
+        });
+
+        const navLinks = navList.querySelectorAll('a');
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navList.classList.remove('active');
+          });
+        });
+      }
+
+      window.scrollTo(0, 0);
+    });
+  </script>
 </body>
 </html>
