@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>OPTK - PSAT Kepulauan Riau</title>
+  <title>OPTK - PSAT Batam, Kepulauan Riau</title>
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/style.css" />
 
   <!-- Fonts & Icons -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
@@ -35,13 +35,25 @@
     <!-- Content utama -->
     <div class="content fade-in">
       <div class="content-description">
-        <h1 class="title">OPTK di Komoditas PSAT <br> Wilayah Kepulauan Riau</h1>
+        <h1 class="title">OPTK di Komoditas PSAT <br> Wilayah Batam, Kepulauan Riau</h1>
         <p>
           Website ini memuat informasi mengenai Organisme Pengganggu Tumbuhan Karantina (OPTK) 
-          pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Kepulauan Riau. 
+          pada komoditas pangan segar asal tumbuhan (PSAT) di wilayah Batam, Kepulauan Riau. 
           Data meliputi apel, anggur, pir, bawang bombay, dan bawang putih.
         </p>
-        <button onclick="window.open('buku-saku/buku-saku.pdf', '_blank')">Buka Buku Saku</button>
+        <div class="cta-buttons">
+          <a href="data.html" class="btn">
+            <i class="fas fa-database"></i> Lihat Data OPTK
+          </a>
+          <a href="buku-saku/buku-saku.pdf" target="_blank" class="btn btn-secondary">
+            <i class="fas fa-book"></i> Buka Buku Saku
+          </a>
+        </div>
+      </div>
+      <div class="content-image">
+        <div class="placeholder">
+          <i class="fas fa-leaf"></i> OPTK Kepulauan Riau
+        </div>
       </div>
     </div>
 
@@ -62,8 +74,11 @@
       </div>
     </section>
 
-  <!-- Kotak Saran (Google Form) - Desain Baru -->
+    <!-- Kotak Saran (Google Form) - Desain Baru -->
     <section class="saran-container fade-in">
+      <div class="decoration decoration-circle"></div>
+      <div class="decoration decoration-circle-2"></div>
+      
       <h2>Kotak Saran</h2>
       <p>Kami sangat menghargai setiap masukan dari Anda untuk meningkatkan kualitas layanan kami</p>
       
@@ -71,70 +86,19 @@
         <div class="saran-icon">
           <i class="fas fa-comment-dots"></i>
         </div>
-        <p>Bantu kami menjadi lebih baik dengan memberikan saran dan kritik konstruktif melalui formulir Google berikut:</p>
+        <p>Bantu kami menjadi lebih baik dengan memberikan saran dan feedback melalui formulir Google berikut:</p>
         <a href="https://forms.gle/z8KSF7MfVjDNi5mW9" target="_blank" class="saran-btn">
           <i class="fab fa-google"></i>
-          <span>Isi Formulir Saran</span>
+          Isi Formulir Saran
         </a>
       </div>
+    </section>
   </main>
 
   <footer>
     <p>© 2025 Balai Karantina Hewan, Ikan, dan Tumbuhan Kepulauan Riau</p>
   </footer>
 
-  <script>
-    // Fade-in animation
-    document.addEventListener('DOMContentLoaded', function() {
-      const faders = document.querySelectorAll('.fade-in');
-      const appearOptions = { threshold: 0.2 };
-      const appearOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if(entry.isIntersecting){
-            entry.target.classList.add('show');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, appearOptions);
-      
-      faders.forEach(fader => appearOnScroll.observe(fader));
-
-      // Toggle preview buku saku
-      const toggleBtn = document.getElementById('togglePreview');
-      const iframeContainer = document.getElementById('iframeContainer');
-
-      if (toggleBtn && iframeContainer) {
-        toggleBtn.addEventListener('click', () => {
-          iframeContainer.classList.toggle('active');
-          toggleBtn.textContent = iframeContainer.classList.contains('active') ? 
-            'Sembunyikan Preview Buku Saku' : 'Tampilkan Preview Buku Saku';
-        });
-      }
-
-      // Hamburger menu functionality
-      const hamburger = document.getElementById('hamburger');
-      const navList = document.getElementById('navList');
-
-      if (hamburger && navList) {
-        hamburger.addEventListener('click', (e) => {
-          e.stopPropagation();
-          navList.classList.toggle('active');
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!hamburger.contains(e.target) && !navList.contains(e.target)) {
-            navList.classList.remove('active');
-          }
-        });
-
-        const navLinks = navList.querySelectorAll('a');
-        navLinks.forEach(link => {
-          link.addEventListener('click', () => navList.classList.remove('active'));
-        });
-      }
-
-      window.scrollTo(0, 0);
-    });
-  </script>
+  <script src="js/script.js"></script>
 </body>
 </html>
